@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { User, Users, Database, ArrowRight, Check } from 'lucide-react';
 
 const Solutions = () => {
@@ -121,13 +122,13 @@ const Solutions = () => {
                   </div>
                   
                   <div className="mt-auto">
-                    <a 
-                      href="#"
+                    <Link 
+                      to="/demo"
                       className="inline-flex items-center text-mutedTeal font-medium hover:text-mutedTeal/80 transition-colors duration-300"
                     >
                       {activeSolution.cta}
                       <ArrowRight className="ml-2 h-4 w-4" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               )}
@@ -140,13 +141,13 @@ const Solutions = () => {
             Not sure which solution is right for your organization? 
             Schedule a consultation with our team to find the perfect fit.
           </p>
-          <a 
-            href="#contact" 
+          <Link 
+            to="/demo" 
             className="inline-flex items-center bg-mutedTeal text-white px-6 py-3 rounded-lg shadow-sm hover:bg-mutedTeal/90 transition-all duration-300 button-hover-effect"
           >
             Book a Consultation
             <ArrowRight className="ml-2 h-5 w-5" />
-          </a>
+          </Link>
         </div>
       </div>
     </section>

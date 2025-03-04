@@ -1,5 +1,6 @@
 
 import React, { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight, Shield, FileText, Check } from 'lucide-react';
 import TypedHeading from "./TypedHeading";
 
@@ -108,10 +109,10 @@ const Hero = () => {
               The premier AI-driven legal automation platform focused on Sharia compliance in UAE & MENA regions.
             </p>
             <div className="flex flex-wrap gap-4 mb-8">
-              <a href="#demo" className="bg-mutedTeal text-white font-medium px-6 py-3 rounded-lg shadow-sm flex items-center justify-center hover:bg-mutedTeal/90 transition-all duration-300 button-hover-effect">
+              <Link to="/demo" className="bg-mutedTeal text-white font-medium px-6 py-3 rounded-lg shadow-sm flex items-center justify-center hover:bg-mutedTeal/90 transition-all duration-300 button-hover-effect">
                 Request Demo
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </a>
+              </Link>
               <a href="#features" className="border border-deepCharcoal/20 text-deepCharcoal font-medium px-6 py-3 rounded-lg flex items-center justify-center hover:bg-deepCharcoal/5 transition-all duration-300">
                 Learn More
               </a>

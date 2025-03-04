@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { cn } from "@/lib/utils";
 import { Menu, X, Globe, ChevronDown, LogIn } from 'lucide-react';
 
@@ -29,9 +30,9 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center">
-          <a href="/" className="text-navyTrust font-bold text-2xl">
+          <Link to="/" className="text-navyTrust font-bold text-2xl">
             ShariaGuard
-          </a>
+          </Link>
         </div>
 
         {/* Desktop Navigation */}
@@ -60,9 +61,9 @@ const Navbar = () => {
               </a>
             </li>
             <li>
-              <a href="#pricing" className="text-deepCharcoal hover:text-mutedTeal link-underline font-medium">
+              <Link to="/pricing" className="text-deepCharcoal hover:text-mutedTeal link-underline font-medium">
                 Pricing
-              </a>
+              </Link>
             </li>
           </ul>
           <div className="flex items-center space-x-4">
@@ -70,13 +71,13 @@ const Navbar = () => {
               <Globe className="w-4 h-4 mr-1" />
               EN
             </button>
-            <a href="#login" className="flex items-center text-navyTrust font-medium px-4 py-2 rounded-md border border-navyTrust hover:bg-navyTrust/5 transition-all duration-300">
+            <Link to="/login" className="flex items-center text-navyTrust font-medium px-4 py-2 rounded-md border border-navyTrust hover:bg-navyTrust/5 transition-all duration-300">
               <LogIn className="w-4 h-4 mr-2" />
               Login
-            </a>
-            <a href="#contact" className="bg-mutedTeal text-white px-4 py-2 rounded-md transition-all duration-300 hover:bg-opacity-90 button-hover-effect">
+            </Link>
+            <Link to="/demo" className="bg-mutedTeal text-white px-4 py-2 rounded-md transition-all duration-300 hover:bg-opacity-90 button-hover-effect">
               Request Demo
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -121,13 +122,13 @@ const Navbar = () => {
               </a>
             </li>
             <li>
-              <a 
-                href="#pricing" 
+              <Link
+                to="/pricing" 
                 className="text-deepCharcoal hover:text-mutedTeal block py-2 font-medium"
                 onClick={() => setIsOpen(false)}
               >
                 Pricing
-              </a>
+              </Link>
             </li>
             <li className="pt-4 border-t border-gray-100">
               <div className="flex items-center justify-between">
@@ -136,21 +137,21 @@ const Navbar = () => {
                   English
                 </button>
                 <div className="flex space-x-2">
-                  <a 
-                    href="#login" 
+                  <Link
+                    to="/login" 
                     className="flex items-center text-navyTrust border border-navyTrust px-3 py-2 rounded-md"
                     onClick={() => setIsOpen(false)}
                   >
                     <LogIn className="w-4 h-4 mr-1" />
                     Login
-                  </a>
-                  <a 
-                    href="#contact" 
+                  </Link>
+                  <Link
+                    to="/demo" 
                     className="bg-mutedTeal text-white px-3 py-2 rounded-md"
                     onClick={() => setIsOpen(false)}
                   >
                     Request Demo
-                  </a>
+                  </Link>
                 </div>
               </div>
             </li>
