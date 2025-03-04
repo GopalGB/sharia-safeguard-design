@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { cn } from "@/lib/utils";
-import { Menu, X, Globe, ChevronDown } from 'lucide-react';
+import { Menu, X, Globe, ChevronDown, LogIn } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -70,6 +70,10 @@ const Navbar = () => {
               <Globe className="w-4 h-4 mr-1" />
               EN
             </button>
+            <a href="#login" className="flex items-center text-navyTrust font-medium px-4 py-2 rounded-md border border-navyTrust hover:bg-navyTrust/5 transition-all duration-300">
+              <LogIn className="w-4 h-4 mr-2" />
+              Login
+            </a>
             <a href="#contact" className="bg-mutedTeal text-white px-4 py-2 rounded-md transition-all duration-300 hover:bg-opacity-90 button-hover-effect">
               Request Demo
             </a>
@@ -131,13 +135,23 @@ const Navbar = () => {
                   <Globe className="w-4 h-4 mr-1" />
                   English
                 </button>
-                <a 
-                  href="#contact" 
-                  className="bg-mutedTeal text-white px-4 py-2 rounded-md"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Request Demo
-                </a>
+                <div className="flex space-x-2">
+                  <a 
+                    href="#login" 
+                    className="flex items-center text-navyTrust border border-navyTrust px-3 py-2 rounded-md"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <LogIn className="w-4 h-4 mr-1" />
+                    Login
+                  </a>
+                  <a 
+                    href="#contact" 
+                    className="bg-mutedTeal text-white px-3 py-2 rounded-md"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Request Demo
+                  </a>
+                </div>
               </div>
             </li>
           </ul>
