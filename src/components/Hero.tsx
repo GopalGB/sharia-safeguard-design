@@ -1,6 +1,7 @@
 
 import React, { useEffect, useRef } from "react";
 import { ArrowRight, Shield, FileText, Check } from 'lucide-react';
+import TypedHeading from "./TypedHeading";
 
 const Hero = () => {
   const animationRef = useRef<HTMLDivElement>(null);
@@ -98,9 +99,11 @@ const Hero = () => {
             <div className="inline-block bg-mutedTeal/10 text-mutedTeal px-3 py-1 rounded-full text-sm font-medium mb-6">
               AI-Powered Legal Compliance
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navyTrust mb-6 leading-tight">
-              Code & Creed. <span className="text-gradient">Perfected.</span>
-            </h1>
+            <TypedHeading 
+              englishText="Code & Creed. Perfected."
+              arabicText="الرمز والعقيدة. على أكمل وجه."
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-navyTrust mb-6 leading-tight"
+            />
             <p className="text-lg md:text-xl text-deepCharcoal/80 mb-8 max-w-xl">
               The premier AI-driven legal automation platform focused on Sharia compliance in UAE & MENA regions.
             </p>
