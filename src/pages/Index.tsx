@@ -4,6 +4,9 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Features from '@/components/Features';
 import Solutions from '@/components/Solutions';
+import HowItWorks from '@/components/HowItWorks';
+import Integrations from '@/components/Integrations';
+import FAQ from '@/components/FAQ';
 import Trust from '@/components/Trust';
 import Footer from '@/components/Footer';
 
@@ -53,7 +56,10 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <Features />
+        <HowItWorks />
         <Solutions />
+        <Integrations />
+        <FAQ />
         <Trust />
       </main>
       <Footer />
