@@ -1,0 +1,47 @@
+# Logs and Debug Files
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencies
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Editor directories and files
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# macOS System Files
+.DS_Store
+.Trash/
+Library/
+Applications/
+Desktop/
+Music/
+Movies/
+Pictures/
+Public/
+
+# Python and Jupyter Notebooks
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.conda/
+.venv/
+env/
+
+# Temporary and Cache Files
+.cache/
+*.swp
