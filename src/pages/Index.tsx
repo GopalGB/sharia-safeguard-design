@@ -9,6 +9,7 @@ import Integrations from '@/components/Integrations';
 import FAQ from '@/components/FAQ';
 import Trust from '@/components/Trust';
 import Footer from '@/components/Footer';
+import FloatingCTA from '@/components/FloatingCTA';
 
 const Index = () => {
   useEffect(() => {
@@ -63,6 +64,7 @@ const Index = () => {
         <Trust />
       </main>
       <Footer />
+      <FloatingCTA />
     </div>
   );
 };
