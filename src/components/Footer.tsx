@@ -9,7 +9,11 @@ const Footer = () => {
         <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
             <div className="mb-6">
-              <h2 className="text-2xl font-bold">ShariaGuard</h2>
+              <img 
+                src="/lovable-uploads/78b75dca-97fc-448a-b653-c6945c45ac1f.png" 
+                alt="ShariaGuard Logo" 
+                className="h-12 mb-4 invert brightness-0 opacity-90"
+              />
               <p className="text-white/70 mt-3">
                 AI-powered legal compliance platform designed specifically for the UAE and MENA region, combining cutting-edge technology with Islamic legal principles.
               </p>

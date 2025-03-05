@@ -30,8 +30,12 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center">
-          <Link to="/" className="text-navyTrust font-bold text-2xl">
-            ShariaGuard
+          <Link to="/" className="flex items-center">
+            <img 
+              src="/lovable-uploads/78b75dca-97fc-448a-b653-c6945c45ac1f.png" 
+              alt="ShariaGuard Logo" 
+              className="h-10 md:h-12"
+            />
           </Link>
         </div>
 

@@ -11,7 +11,11 @@ const Login = () => {
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <div className="text-center mb-8">
               <Link to="/" className="inline-block">
-                <h1 className="text-navyTrust font-bold text-2xl">ShariaGuard</h1>
+                <img 
+                  src="/lovable-uploads/78b75dca-97fc-448a-b653-c6945c45ac1f.png" 
+                  alt="ShariaGuard Logo" 
+                  className="h-12 mx-auto"
+                />
               </Link>
               <p className="text-deepCharcoal/60 mt-2">Sign in to your account</p>
             </div>
