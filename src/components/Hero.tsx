@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Shield, FileText, Check } from 'lucide-react';
@@ -102,7 +101,7 @@ const Hero = () => {
             </div>
             <TypedHeading 
               englishText="Code & Creed. Perfected."
-              arabicText="الرمز والعقيدة. على أكمل وجه."
+              arabicText="القانون والعقيدة. الكمال"
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-navyTrust mb-6 leading-tight"
             />
             <p className="text-lg md:text-xl text-deepCharcoal/80 mb-8 max-w-xl">
