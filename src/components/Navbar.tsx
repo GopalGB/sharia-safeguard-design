@@ -32,9 +32,9 @@ const Navbar = () => {
         <div className="flex items-center">
           <Link to="/" className="flex items-center">
             <img 
-              src="/lovable-uploads/78b75dca-97fc-448a-b653-c6945c45ac1f.png" 
+              src="/lovable-uploads/389d5a05-7129-42d5-bec5-e81650db6590.png" 
               alt="ShariaGuard Logo" 
-              className="h-10 md:h-12"
+              className="h-14 md:h-16 transition-all duration-300"
             />
           </Link>
         </div>
