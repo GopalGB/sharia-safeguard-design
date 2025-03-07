@@ -72,6 +72,11 @@ export default {
                 deepCharcoal: '#264653',
                 lightSand: '#F8F9FA',
                 softGray: '#E9ECEF',
+                // UAE flag colors
+                uaeRed: '#8A1538',
+                uaeGreen: '#00732F',
+                uaeWhite: '#FFFFFF',
+                uaeBlack: '#000000',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -161,6 +166,38 @@ export default {
 						transform: 'rotate(360deg)'
 					}
 				},
+				'bounce-subtle': {
+					'0%, 100%': {
+						transform: 'translateY(0)'
+					},
+					'50%': {
+						transform: 'translateY(-5px)'
+					}
+				},
+				'shimmer': {
+					'0%': {
+						backgroundPosition: '-200% 0'
+					},
+					'100%': {
+						backgroundPosition: '200% 0'
+					}
+				},
+				'float': {
+					'0%, 100%': {
+						transform: 'translateY(0)'
+					},
+					'50%': {
+						transform: 'translateY(-10px)'
+					}
+				},
+				'highlight-pulse': {
+					'0%, 100%': {
+						boxShadow: '0 0 0 0 rgba(42, 157, 143, 0)'
+					},
+					'50%': {
+						boxShadow: '0 0 0 10px rgba(42, 157, 143, 0.2)'
+					}
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -172,12 +209,18 @@ export default {
 				'slide-down': 'slide-down 0.7s ease-out',
 				'pulse-soft': 'pulse-soft 3s infinite ease-in-out',
 				'rotate-slow': 'rotate-slow 20s linear infinite',
+				'bounce-subtle': 'bounce-subtle 2s infinite ease-in-out',
+				'shimmer': 'shimmer 3s infinite linear',
+				'float': 'float 4s infinite ease-in-out',
+				'highlight-pulse': 'highlight-pulse 2s infinite ease-in-out',
 			},
 			backgroundImage: {
 				'geometric-pattern': "url('/geometric-pattern.svg')",
 				'hero-gradient': 'linear-gradient(135deg, #1A365D 0%, #264653 100%)',
 				'feature-gradient': 'linear-gradient(135deg, #2A9D8F 0%, #264653 100%)',
 				'trust-gradient': 'linear-gradient(135deg, #1A365D 0%, #2A9D8F 100%)',
+				'shimmer-gradient': 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%)',
+				'uae-gradient': 'linear-gradient(135deg, #8A1538 0%, #00732F 100%)',
 			}
 		}
 	},

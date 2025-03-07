@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Shield, FileText, Check } from 'lucide-react';
@@ -28,7 +29,7 @@ const Hero = () => {
         color: string;
       }> = [];
       
-      // Create particles
+      // Create particles with UAE-inspired colors
       for (let i = 0; i < 30; i++) {
         particles.push({
           x: Math.random() * canvas.width,
@@ -37,7 +38,7 @@ const Hero = () => {
           speedX: (Math.random() - 0.5) * 0.5,
           speedY: (Math.random() - 0.5) * 0.5,
           opacity: Math.random() * 0.5 + 0.2,
-          color: ['#1A365D', '#2A9D8F', '#E9C46A'][Math.floor(Math.random() * 3)]
+          color: ['#1A365D', '#2A9D8F', '#E9C46A', '#8A1538'][Math.floor(Math.random() * 4)] // Added UAE flag red
         });
       }
       
@@ -58,7 +59,7 @@ const Hero = () => {
           if (particle.x < 0 || particle.x > canvas.width) particle.speedX *= -1;
           if (particle.y < 0 || particle.y > canvas.height) particle.speedY *= -1;
           
-          // Connect particles
+          // Connect particles - creates a network effect
           for (let j = i + 1; j < particles.length; j++) {
             const dx = particles[j].x - particle.x;
             const dy = particles[j].y - particle.y;
@@ -97,7 +98,7 @@ const Hero = () => {
         <div className="flex flex-col md:flex-row md:items-center">
           <div className="md:w-1/2 md:pr-8 animate-slide-up">
             <div className="inline-block bg-mutedTeal/10 text-mutedTeal px-3 py-1 rounded-full text-sm font-medium mb-6">
-              AI-Powered Legal Compliance
+              AI-Powered Sharia Compliance
             </div>
             <TypedHeading 
               englishText="Code & Creed. Perfected."
@@ -108,41 +109,41 @@ const Hero = () => {
               The premier AI-driven legal automation platform focused on Sharia compliance in UAE & MENA regions.
             </p>
             <div className="flex flex-wrap gap-4 mb-8">
-              <Link to="/demo" className="bg-mutedTeal text-white font-medium px-6 py-3 rounded-lg shadow-sm flex items-center justify-center hover:bg-mutedTeal/90 transition-all duration-300 button-hover-effect">
+              <Link to="/demo" className="bg-mutedTeal text-white font-medium px-6 py-3 rounded-lg shadow-md flex items-center justify-center hover:bg-mutedTeal/90 transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg">
                 Request Demo
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
-              <a href="#features" className="border border-deepCharcoal/20 text-deepCharcoal font-medium px-6 py-3 rounded-lg flex items-center justify-center hover:bg-deepCharcoal/5 transition-all duration-300">
+              <a href="#features" className="border border-deepCharcoal/20 text-deepCharcoal font-medium px-6 py-3 rounded-lg flex items-center justify-center hover:bg-deepCharcoal/5 transition-all duration-300 transform hover:-translate-y-0.5">
                 Learn More
               </a>
             </div>
             <div className="grid grid-cols-2 gap-4 max-w-md">
-              <div className="flex items-start">
-                <div className="flex-shrink-0 bg-mutedTeal/10 rounded-full p-1">
+              <div className="flex items-start group hover:transform hover:translate-x-1 transition-all duration-300">
+                <div className="flex-shrink-0 bg-mutedTeal/10 rounded-full p-1 group-hover:bg-mutedTeal/20 transition-colors duration-300">
                   <Check className="h-4 w-4 text-mutedTeal" />
                 </div>
                 <div className="ml-2">
                   <p className="text-sm text-deepCharcoal font-medium">98% Accuracy in Arabic NLP</p>
                 </div>
               </div>
-              <div className="flex items-start">
-                <div className="flex-shrink-0 bg-mutedTeal/10 rounded-full p-1">
+              <div className="flex items-start group hover:transform hover:translate-x-1 transition-all duration-300">
+                <div className="flex-shrink-0 bg-mutedTeal/10 rounded-full p-1 group-hover:bg-mutedTeal/20 transition-colors duration-300">
                   <Check className="h-4 w-4 text-mutedTeal" />
                 </div>
                 <div className="ml-2">
                   <p className="text-sm text-deepCharcoal font-medium">UAE Data Hosting</p>
                 </div>
               </div>
-              <div className="flex items-start">
-                <div className="flex-shrink-0 bg-mutedTeal/10 rounded-full p-1">
+              <div className="flex items-start group hover:transform hover:translate-x-1 transition-all duration-300">
+                <div className="flex-shrink-0 bg-mutedTeal/10 rounded-full p-1 group-hover:bg-mutedTeal/20 transition-colors duration-300">
                   <Check className="h-4 w-4 text-mutedTeal" />
                 </div>
                 <div className="ml-2">
                   <p className="text-sm text-deepCharcoal font-medium">Bilingual Support</p>
                 </div>
               </div>
-              <div className="flex items-start">
-                <div className="flex-shrink-0 bg-mutedTeal/10 rounded-full p-1">
+              <div className="flex items-start group hover:transform hover:translate-x-1 transition-all duration-300">
+                <div className="flex-shrink-0 bg-mutedTeal/10 rounded-full p-1 group-hover:bg-mutedTeal/20 transition-colors duration-300">
                   <Check className="h-4 w-4 text-mutedTeal" />
                 </div>
                 <div className="ml-2">
@@ -153,7 +154,7 @@ const Hero = () => {
           </div>
           <div className="md:w-1/2 mt-12 md:mt-0 animate-fade-in" style={{ animationDelay: '0.3s' }}>
             <div className="relative">
-              <div ref={animationRef} className="aspect-square md:aspect-auto md:h-[500px] rounded-2xl bg-gradient-to-br from-navyTrust/5 to-mutedTeal/5 backdrop-blur-sm border border-white/20 shadow-xl flex items-center justify-center overflow-hidden">
+              <div ref={animationRef} className="aspect-square md:aspect-auto md:h-[500px] rounded-2xl bg-gradient-to-br from-navyTrust/10 to-mutedTeal/10 backdrop-blur-sm border border-white/30 shadow-xl flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="transform -rotate-6 opacity-80 floating-animation">
                     <div className="relative z-10 bg-white rounded-lg shadow-lg p-5 max-w-xs">
@@ -179,8 +180,9 @@ const Hero = () => {
                   </div>
                 </div>
               </div>
-              <div className="absolute -bottom-5 -right-5 h-24 w-24 rounded-full bg-sandGold/20 backdrop-blur-md border border-white/20 animate-rotate-slow"></div>
-              <div className="absolute -top-8 -left-8 h-16 w-16 rounded-full bg-mutedTeal/20 backdrop-blur-md border border-white/20 animate-rotate-slow" style={{ animationDirection: 'reverse' }}></div>
+              <div className="absolute -bottom-5 -right-5 h-24 w-24 rounded-full bg-sandGold/30 backdrop-blur-md border border-white/20 animate-rotate-slow"></div>
+              <div className="absolute -top-8 -left-8 h-16 w-16 rounded-full bg-mutedTeal/30 backdrop-blur-md border border-white/20 animate-rotate-slow" style={{ animationDirection: 'reverse' }}></div>
+              <div className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-[#8A1538]/20 backdrop-blur-md border border-white/20 animate-pulse-soft"></div>
             </div>
           </div>
         </div>
