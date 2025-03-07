@@ -45,7 +45,7 @@ const Integrations = () => {
             <div className="space-y-6 mb-8">
               <div className="flex items-start">
                 <div className="flex-shrink-0 mr-4 bg-mutedTeal/10 p-3 rounded-lg">
-                  <Server className="h-6 w-6 text-mutedTeal" />
+                  <Server className="h-8 w-8 text-mutedTeal" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg text-navyTrust mb-1">REST API</h3>
@@ -55,7 +55,7 @@ const Integrations = () => {
               
               <div className="flex items-start">
                 <div className="flex-shrink-0 mr-4 bg-mutedTeal/10 p-3 rounded-lg">
-                  <Webhook className="h-6 w-6 text-mutedTeal" />
+                  <Webhook className="h-8 w-8 text-mutedTeal" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg text-navyTrust mb-1">Webhook Support</h3>
@@ -65,7 +65,7 @@ const Integrations = () => {
               
               <div className="flex items-start">
                 <div className="flex-shrink-0 mr-4 bg-mutedTeal/10 p-3 rounded-lg">
-                  <Box className="h-6 w-6 text-mutedTeal" />
+                  <Box className="h-8 w-8 text-mutedTeal" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg text-navyTrust mb-1">Pre-built Integrations</h3>
@@ -79,7 +79,7 @@ const Integrations = () => {
               className="inline-flex items-center text-mutedTeal font-medium hover:text-mutedTeal/80 transition-colors duration-300"
             >
               Explore Integrations
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </div>
           
@@ -92,7 +92,7 @@ const Integrations = () => {
               {integrations.map((integration, index) => (
                 <div key={index} className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
                   <div className="flex items-center mb-3">
-                    <div className="bg-mutedTeal/10 text-mutedTeal w-8 h-8 rounded-full flex items-center justify-center text-lg font-bold mr-3">
+                    <div className="bg-mutedTeal/10 text-mutedTeal w-10 h-10 rounded-full flex items-center justify-center text-xl font-bold mr-3">
                       {integration.icon}
                     </div>
                     <h4 className="font-medium text-navyTrust">{integration.name}</h4>

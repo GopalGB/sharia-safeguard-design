@@ -6,22 +6,22 @@ import { Link } from 'react-router-dom';
 const HowItWorks = () => {
   const steps = [
     {
-      icon: <FileUp className="h-10 w-10 text-mutedTeal" />,
+      icon: <FileUp className="h-14 w-14 text-mutedTeal" />,
       title: 'Upload',
       description: 'Upload documents in Arabic or English through our secure portal.'
     },
     {
-      icon: <Search className="h-10 w-10 text-mutedTeal" />,
+      icon: <Search className="h-14 w-14 text-mutedTeal" />,
       title: 'Analyze',
       description: 'Our AI analyzes content against UAE regulations and Sharia principles.'
     },
     {
-      icon: <ClipboardCheck className="h-10 w-10 text-mutedTeal" />,
+      icon: <ClipboardCheck className="h-14 w-14 text-mutedTeal" />,
       title: 'Review',
       description: 'Receive detailed compliance reports with specific recommendations.'
     },
     {
-      icon: <CheckCircle className="h-10 w-10 text-mutedTeal" />,
+      icon: <CheckCircle className="h-14 w-14 text-mutedTeal" />,
       title: 'Implement',
       description: 'Make necessary changes with our guided assistance.'
     }
@@ -66,7 +66,7 @@ const HowItWorks = () => {
             className="inline-flex items-center bg-mutedTeal text-white px-6 py-3 rounded-lg shadow-sm hover:bg-mutedTeal/90 transition-all duration-300"
           >
             Start Your Compliance Journey
-            <ArrowRight className="ml-2 h-5 w-5" />
+            <ArrowRight className="ml-2 h-6 w-6" />
           </Link>
         </div>
       </div>

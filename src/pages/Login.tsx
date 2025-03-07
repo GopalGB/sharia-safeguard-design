@@ -23,7 +23,7 @@ const Login = () => {
     <div className="min-h-screen bg-gradient-to-b from-lightSand to-white flex flex-col">
       <div className="absolute top-4 left-4 md:top-8 md:left-8">
         <Link to="/" className="inline-flex items-center text-deepCharcoal/60 text-sm hover:text-mutedTeal transition-colors">
-          <ArrowLeft className="mr-2 h-4 w-4" />
+          <ArrowLeft className="mr-2 h-5 w-5" />
           Back to home
         </Link>
       </div>
@@ -36,7 +36,7 @@ const Login = () => {
                 <img 
                   src="/lovable-uploads/78b75dca-97fc-448a-b653-c6945c45ac1f.png" 
                   alt="ShariaGuard Logo" 
-                  className="h-12 mx-auto"
+                  className="h-16 mx-auto" 
                 />
               </Link>
               <p className="text-deepCharcoal/60 mt-2">Sign in to your account</p>

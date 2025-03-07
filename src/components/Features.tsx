@@ -15,21 +15,21 @@ const Features = () => {
   const features = [
     {
       id: 'ai-compliance',
-      icon: <Shield className="h-8 w-8 text-mutedTeal" />,
+      icon: <Shield className="h-12 w-12 text-mutedTeal" />,
       title: 'AI-Powered Compliance',
       description: 'Our advanced NLP technology is optimized for Arabic and English legal documents, ensuring 98% accuracy in compliance verification.',
       benefits: ['Real-time regulatory monitoring', 'Multilingual document processing', 'Automated compliance checks']
     },
     {
       id: 'document-automation',
-      icon: <FileText className="h-8 w-8 text-mutedTeal" />,
+      icon: <FileText className="h-12 w-12 text-mutedTeal" />,
       title: 'Document Automation',
       description: 'Transform complex legal documents into automated workflows that save time and reduce human error in contract management.',
       benefits: ['Smart contract generation', 'Automated document review', 'Version control and audit trails']
     },
     {
       id: 'ethical-ai',
-      icon: <Scale className="h-8 w-8 text-mutedTeal" />,
+      icon: <Scale className="h-12 w-12 text-mutedTeal" />,
       title: 'Ethical AI Governance',
       description: 'Our AI framework is built with Islamic ethical principles at its core, ensuring transparent and culturally sensitive decision-making.',
       benefits: ['Human-in-the-loop validation', 'Transparent reasoning', 'Sharia-compliant algorithms']
@@ -74,7 +74,7 @@ const Features = () => {
                 {feature.benefits.map((benefit, i) => (
                   <li key={i} className="flex items-start">
                     <div className="flex-shrink-0 text-mutedTeal mr-2">
-                      <Check className="h-5 w-5" />
+                      <Check className="h-6 w-6" />
                     </div>
                     <span className="text-sm text-deepCharcoal">{benefit}</span>
                   </li>
@@ -98,19 +98,19 @@ const Features = () => {
               </p>
               <div className="grid grid-cols-2 gap-4">
                 <div className="flex items-center">
-                  <BookOpen className="h-5 w-5 text-mutedTeal mr-2" />
+                  <BookOpen className="h-6 w-6 text-mutedTeal mr-2" />
                   <span className="text-sm font-medium">Local Legal Expertise</span>
                 </div>
                 <div className="flex items-center">
-                  <Lock className="h-5 w-5 text-mutedTeal mr-2" />
+                  <Lock className="h-6 w-6 text-mutedTeal mr-2" />
                   <span className="text-sm font-medium">UAE Data Hosting</span>
                 </div>
                 <div className="flex items-center">
-                  <Globe className="h-5 w-5 text-mutedTeal mr-2" />
+                  <Globe className="h-6 w-6 text-mutedTeal mr-2" />
                   <span className="text-sm font-medium">Bilingual Interface</span>
                 </div>
                 <div className="flex items-center">
-                  <Database className="h-5 w-5 text-mutedTeal mr-2" />
+                  <Database className="h-6 w-6 text-mutedTeal mr-2" />
                   <span className="text-sm font-medium">Regulatory Database</span>
                 </div>
               </div>
@@ -130,7 +130,7 @@ const Features = () => {
                 <div className="absolute inset-0 flex items-center justify-center p-6">
                   <div className="text-white text-center">
                     <div className="mb-4 opacity-90">
-                      <Shield className="h-16 w-16 mx-auto" />
+                      <Shield className="h-20 w-20 mx-auto" />
                     </div>
                     <div className="text-2xl font-bold mb-2">98% Accuracy</div>
                     <div className="text-white/80 max-w-xs mx-auto">
