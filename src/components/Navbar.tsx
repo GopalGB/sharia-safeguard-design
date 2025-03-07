@@ -1,12 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { cn } from "@/lib/utils";
 import { Menu, X, Globe, ChevronDown, LogIn, Shield } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
   
   useEffect(() => {
     const handleScroll = () => {
@@ -19,6 +20,17 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const scrollToSection = (sectionId: string) => {
+    setIsOpen(false);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // If not on home page, navigate to home and then scroll
+      navigate('/#' + sectionId);
+    }
+  };
   
   return <nav className={cn(
     "fixed top-0 left-0 w-full z-50 transition-all duration-500", 
@@ -39,9 +51,12 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-8">
           <ul className="flex space-x-8">
             <li>
-              <a href="#features" className="text-deepCharcoal hover:text-mutedTeal link-underline font-medium text-base transition-all duration-300">
+              <button 
+                onClick={() => scrollToSection('features')} 
+                className="text-deepCharcoal hover:text-mutedTeal link-underline font-medium text-base transition-all duration-300"
+              >
                 Features
-              </a>
+              </button>
             </li>
             <li className="relative group">
               <button className="text-deepCharcoal hover:text-mutedTeal flex items-center font-medium text-base transition-all duration-300">
@@ -49,16 +64,34 @@ const Navbar = () => {
               </button>
               <div className="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform group-hover:translate-y-0 translate-y-2">
                 <div className="py-1" role="menu">
-                  <a href="#" className="block px-4 py-2 text-sm text-deepCharcoal hover:bg-mutedTeal hover:text-white transition-colors duration-200">For Legal Teams</a>
-                  <a href="#" className="block px-4 py-2 text-sm text-deepCharcoal hover:bg-mutedTeal hover:text-white transition-colors duration-200">For SMEs & Startups</a>
-                  <a href="#" className="block px-4 py-2 text-sm text-deepCharcoal hover:bg-mutedTeal hover:text-white transition-colors duration-200">For Government</a>
+                  <button 
+                    onClick={() => scrollToSection('solutions')} 
+                    className="block w-full text-left px-4 py-2 text-sm text-deepCharcoal hover:bg-mutedTeal hover:text-white transition-colors duration-200"
+                  >
+                    For Legal Teams
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('solutions')} 
+                    className="block w-full text-left px-4 py-2 text-sm text-deepCharcoal hover:bg-mutedTeal hover:text-white transition-colors duration-200"
+                  >
+                    For SMEs & Startups
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('solutions')} 
+                    className="block w-full text-left px-4 py-2 text-sm text-deepCharcoal hover:bg-mutedTeal hover:text-white transition-colors duration-200"
+                  >
+                    For Government
+                  </button>
                 </div>
               </div>
             </li>
             <li>
-              <a href="#about" className="text-deepCharcoal hover:text-mutedTeal link-underline font-medium text-base transition-all duration-300">
+              <button 
+                onClick={() => scrollToSection('trust')} 
+                className="text-deepCharcoal hover:text-mutedTeal link-underline font-medium text-base transition-all duration-300"
+              >
                 About
-              </a>
+              </button>
             </li>
             <li>
               <Link to="/pricing" className="text-deepCharcoal hover:text-mutedTeal link-underline font-medium text-base transition-all duration-300">
@@ -92,19 +125,28 @@ const Navbar = () => {
         <div className="container mx-auto px-4 py-4">
           <ul className="space-y-4">
             <li>
-              <a href="#features" className="text-deepCharcoal hover:text-mutedTeal block py-2 font-medium" onClick={() => setIsOpen(false)}>
+              <button
+                onClick={() => scrollToSection('features')}
+                className="text-deepCharcoal hover:text-mutedTeal block py-2 font-medium w-full text-left"
+              >
                 Features
-              </a>
+              </button>
             </li>
             <li>
-              <a href="#solutions" className="text-deepCharcoal hover:text-mutedTeal block py-2 font-medium" onClick={() => setIsOpen(false)}>
+              <button
+                onClick={() => scrollToSection('solutions')}
+                className="text-deepCharcoal hover:text-mutedTeal block py-2 font-medium w-full text-left"
+              >
                 Solutions
-              </a>
+              </button>
             </li>
             <li>
-              <a href="#about" className="text-deepCharcoal hover:text-mutedTeal block py-2 font-medium" onClick={() => setIsOpen(false)}>
+              <button
+                onClick={() => scrollToSection('trust')}
+                className="text-deepCharcoal hover:text-mutedTeal block py-2 font-medium w-full text-left"
+              >
                 About
-              </a>
+              </button>
             </li>
             <li>
               <Link to="/pricing" className="text-deepCharcoal hover:text-mutedTeal block py-2 font-medium" onClick={() => setIsOpen(false)}>

@@ -1,10 +1,21 @@
 
 import React from 'react';
 import { Facebook, Twitter, Linkedin, Mail, Phone, MapPin, Instagram, Shield } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const navigate = useNavigate();
+  
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // If not on home page, navigate to home and then scroll
+      navigate('/#' + sectionId);
+    }
+  };
   
   return (
     <footer className="bg-gradient-to-b from-navyTrust to-navyTrust/95 text-white">
@@ -12,26 +23,28 @@ const Footer = () => {
         <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
             <div className="mb-6">
-              <img 
-                src="/lovable-uploads/78b75dca-97fc-448a-b653-c6945c45ac1f.png" 
-                alt="ShariaGuard Logo" 
-                className="h-12 mb-4 invert brightness-0 opacity-90"
-              />
+              <Link to="/">
+                <img 
+                  src="/lovable-uploads/78b75dca-97fc-448a-b653-c6945c45ac1f.png" 
+                  alt="ShariaGuard Logo" 
+                  className="h-12 mb-4 invert brightness-0 opacity-90"
+                />
+              </Link>
               <p className="text-white/70 mt-3">
                 AI-powered legal compliance platform designed specifically for the UAE and MENA region, combining cutting-edge technology with Islamic legal principles.
               </p>
             </div>
             <div className="flex space-x-4">
-              <a href="#" aria-label="Facebook" className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors duration-300">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors duration-300">
                 <Facebook size={18} />
               </a>
-              <a href="#" aria-label="Twitter" className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors duration-300">
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors duration-300">
                 <Twitter size={18} />
               </a>
-              <a href="#" aria-label="LinkedIn" className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors duration-300">
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors duration-300">
                 <Linkedin size={18} />
               </a>
-              <a href="#" aria-label="Instagram" className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors duration-300">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors duration-300">
                 <Instagram size={18} />
               </a>
             </div>
@@ -41,34 +54,49 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#features" className="text-white/70 hover:text-white transition-colors duration-300 flex items-center">
+                <button 
+                  onClick={() => scrollToSection('features')}
+                  className="text-white/70 hover:text-white transition-colors duration-300 flex items-center"
+                >
                   <span className="mr-2 w-1 h-1 bg-mutedTeal rounded-full"></span>
                   Features
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#solutions" className="text-white/70 hover:text-white transition-colors duration-300 flex items-center">
+                <button 
+                  onClick={() => scrollToSection('solutions')}
+                  className="text-white/70 hover:text-white transition-colors duration-300 flex items-center"
+                >
                   <span className="mr-2 w-1 h-1 bg-mutedTeal rounded-full"></span>
                   Solutions
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#pricing" className="text-white/70 hover:text-white transition-colors duration-300 flex items-center">
+                <Link 
+                  to="/pricing" 
+                  className="text-white/70 hover:text-white transition-colors duration-300 flex items-center"
+                >
                   <span className="mr-2 w-1 h-1 bg-mutedTeal rounded-full"></span>
                   Pricing
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#about" className="text-white/70 hover:text-white transition-colors duration-300 flex items-center">
+                <button 
+                  onClick={() => scrollToSection('trust')}
+                  className="text-white/70 hover:text-white transition-colors duration-300 flex items-center"
+                >
                   <span className="mr-2 w-1 h-1 bg-mutedTeal rounded-full"></span>
                   About Us
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#contact" className="text-white/70 hover:text-white transition-colors duration-300 flex items-center">
+                <Link 
+                  to="/demo"
+                  className="text-white/70 hover:text-white transition-colors duration-300 flex items-center"
+                >
                   <span className="mr-2 w-1 h-1 bg-mutedTeal rounded-full"></span>
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -77,34 +105,49 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Resources</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-white/70 hover:text-white transition-colors duration-300 flex items-center">
+                <Link 
+                  to="/coming-soon" 
+                  className="text-white/70 hover:text-white transition-colors duration-300 flex items-center"
+                >
                   <span className="mr-2 w-1 h-1 bg-mutedTeal rounded-full"></span>
                   Blog
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-white/70 hover:text-white transition-colors duration-300 flex items-center">
+                <Link 
+                  to="/coming-soon" 
+                  className="text-white/70 hover:text-white transition-colors duration-300 flex items-center"
+                >
                   <span className="mr-2 w-1 h-1 bg-mutedTeal rounded-full"></span>
                   Case Studies
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-white/70 hover:text-white transition-colors duration-300 flex items-center">
+                <Link 
+                  to="/coming-soon" 
+                  className="text-white/70 hover:text-white transition-colors duration-300 flex items-center"
+                >
                   <span className="mr-2 w-1 h-1 bg-mutedTeal rounded-full"></span>
                   Compliance Guides
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-white/70 hover:text-white transition-colors duration-300 flex items-center">
+                <Link 
+                  to="/coming-soon" 
+                  className="text-white/70 hover:text-white transition-colors duration-300 flex items-center"
+                >
                   <span className="mr-2 w-1 h-1 bg-mutedTeal rounded-full"></span>
                   Documentation
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-white/70 hover:text-white transition-colors duration-300 flex items-center">
+                <Link 
+                  to="/coming-soon" 
+                  className="text-white/70 hover:text-white transition-colors duration-300 flex items-center"
+                >
                   <span className="mr-2 w-1 h-1 bg-mutedTeal rounded-full"></span>
                   API
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -120,9 +163,9 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <Phone size={18} className="text-mutedTeal mr-3 flex-shrink-0" />
-                <span className="text-white/70">
+                <a href="tel:+97141234567" className="text-white/70 hover:text-white transition-colors">
                   +971 4 123 4567
-                </span>
+                </a>
               </li>
               <li className="flex items-center">
                 <Mail size={18} className="text-mutedTeal mr-3 flex-shrink-0" />
@@ -146,15 +189,15 @@ const Footer = () => {
             © {currentYear} ShariaGuard. All rights reserved.
           </div>
           <div className="flex flex-wrap justify-center gap-4 md:gap-6 text-sm">
-            <a href="#" className="text-white/60 hover:text-white transition-colors duration-300">
+            <Link to="/coming-soon" className="text-white/60 hover:text-white transition-colors duration-300">
               Privacy Policy
-            </a>
-            <a href="#" className="text-white/60 hover:text-white transition-colors duration-300">
+            </Link>
+            <Link to="/coming-soon" className="text-white/60 hover:text-white transition-colors duration-300">
               Terms of Service
-            </a>
-            <a href="#" className="text-white/60 hover:text-white transition-colors duration-300">
+            </Link>
+            <Link to="/coming-soon" className="text-white/60 hover:text-white transition-colors duration-300">
               Cookie Policy
-            </a>
+            </Link>
             <div className="hidden md:flex items-center text-white/30">
               <span className="mx-2">•</span>
               <span className="flex items-center">
