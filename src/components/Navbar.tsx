@@ -1,13 +1,10 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from "@/lib/utils";
 import { Menu, X, Globe, ChevronDown, LogIn } from 'lucide-react';
-
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -16,26 +13,14 @@ const Navbar = () => {
         setScrolled(false);
       }
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  return (
-    <nav 
-      className={cn(
-        "fixed top-0 left-0 w-full z-50 transition-all duration-300",
-        scrolled ? "bg-white bg-opacity-90 backdrop-filter backdrop-blur-md shadow-sm py-3" : "bg-transparent py-5"
-      )}
-    >
+  return <nav className={cn("fixed top-0 left-0 w-full z-50 transition-all duration-300", scrolled ? "bg-white bg-opacity-90 backdrop-filter backdrop-blur-md shadow-sm py-3" : "bg-transparent py-5")}>
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center">
           <Link to="/" className="flex items-center">
-            <img 
-              src="/lovable-uploads/389d5a05-7129-42d5-bec5-e81650db6590.png" 
-              alt="ShariaGuard Logo" 
-              className="h-14 md:h-16 transition-all duration-300"
-            />
+            <img src="/lovable-uploads/389d5a05-7129-42d5-bec5-e81650db6590.png" alt="ShariaGuard Logo" className="h-14 md:h-16 transition-all duration-300 object-fill" />
           </Link>
         </div>
 
@@ -86,10 +71,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Navigation Toggle */}
-        <button 
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-deepCharcoal"
-        >
+        <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-deepCharcoal">
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
@@ -99,38 +81,22 @@ const Navbar = () => {
         <div className="container mx-auto px-4 py-4">
           <ul className="space-y-4">
             <li>
-              <a 
-                href="#features" 
-                className="text-deepCharcoal hover:text-mutedTeal block py-2 font-medium"
-                onClick={() => setIsOpen(false)}
-              >
+              <a href="#features" className="text-deepCharcoal hover:text-mutedTeal block py-2 font-medium" onClick={() => setIsOpen(false)}>
                 Features
               </a>
             </li>
             <li>
-              <a 
-                href="#solutions" 
-                className="text-deepCharcoal hover:text-mutedTeal block py-2 font-medium"
-                onClick={() => setIsOpen(false)}
-              >
+              <a href="#solutions" className="text-deepCharcoal hover:text-mutedTeal block py-2 font-medium" onClick={() => setIsOpen(false)}>
                 Solutions
               </a>
             </li>
             <li>
-              <a 
-                href="#about" 
-                className="text-deepCharcoal hover:text-mutedTeal block py-2 font-medium"
-                onClick={() => setIsOpen(false)}
-              >
+              <a href="#about" className="text-deepCharcoal hover:text-mutedTeal block py-2 font-medium" onClick={() => setIsOpen(false)}>
                 About
               </a>
             </li>
             <li>
-              <Link
-                to="/pricing" 
-                className="text-deepCharcoal hover:text-mutedTeal block py-2 font-medium"
-                onClick={() => setIsOpen(false)}
-              >
+              <Link to="/pricing" className="text-deepCharcoal hover:text-mutedTeal block py-2 font-medium" onClick={() => setIsOpen(false)}>
                 Pricing
               </Link>
             </li>
@@ -141,19 +107,11 @@ const Navbar = () => {
                   English
                 </button>
                 <div className="flex space-x-2">
-                  <Link
-                    to="/login" 
-                    className="flex items-center text-navyTrust border border-navyTrust px-3 py-2 rounded-md"
-                    onClick={() => setIsOpen(false)}
-                  >
+                  <Link to="/login" className="flex items-center text-navyTrust border border-navyTrust px-3 py-2 rounded-md" onClick={() => setIsOpen(false)}>
                     <LogIn className="w-4 h-4 mr-1" />
                     Login
                   </Link>
-                  <Link
-                    to="/demo" 
-                    className="bg-mutedTeal text-white px-3 py-2 rounded-md"
-                    onClick={() => setIsOpen(false)}
-                  >
+                  <Link to="/demo" className="bg-mutedTeal text-white px-3 py-2 rounded-md" onClick={() => setIsOpen(false)}>
                     Request Demo
                   </Link>
                 </div>
@@ -162,8 +120,6 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-    </nav>
-  );
+    </nav>;
 };
-
 export default Navbar;
