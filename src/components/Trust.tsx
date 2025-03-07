@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Shield, Lock, Globe, Check } from 'lucide-react';
+import { Shield, Lock, Globe, Check, Award, Star } from 'lucide-react';
 
 const Trust = () => {
   const testimonials = [
@@ -25,6 +25,13 @@ const Trust = () => {
     { name: "BSI Kitemark", description: "AI Ethics Framework" }
   ];
 
+  const partners = [
+    "Dubai Financial Services Authority",
+    "Abu Dhabi Global Market",
+    "Emirates NBD",
+    "Dubai Chamber of Commerce"
+  ];
+
   return (
     <section id="trust" className="section-padding relative overflow-hidden">
       <div className="absolute inset-0 geometric-pattern opacity-50"></div>
@@ -42,7 +49,7 @@ const Trust = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 mb-16">
-          <div className="bg-white rounded-xl shadow-md p-6 animate-fade-in">
+          <div className="bg-white rounded-xl shadow-md p-6 animate-fade-in hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
             <div className="mb-6">
               <div className="inline-block p-3 rounded-lg bg-mutedTeal/10">
                 <Shield className="h-6 w-6 text-mutedTeal" />
@@ -70,7 +77,7 @@ const Trust = () => {
             </ul>
           </div>
 
-          <div className="bg-white rounded-xl shadow-md p-6 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+          <div className="bg-white rounded-xl shadow-md p-6 animate-fade-in hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1" style={{ animationDelay: '0.1s' }}>
             <div className="mb-6">
               <div className="inline-block p-3 rounded-lg bg-mutedTeal/10">
                 <Lock className="h-6 w-6 text-mutedTeal" />
@@ -98,7 +105,7 @@ const Trust = () => {
             </ul>
           </div>
 
-          <div className="bg-white rounded-xl shadow-md p-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+          <div className="bg-white rounded-xl shadow-md p-6 animate-fade-in hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1" style={{ animationDelay: '0.2s' }}>
             <div className="mb-6">
               <div className="inline-block p-3 rounded-lg bg-mutedTeal/10">
                 <Globe className="h-6 w-6 text-mutedTeal" />
@@ -129,12 +136,13 @@ const Trust = () => {
 
         <div className="bg-gradient-to-br from-navyTrust to-mutedTeal rounded-xl overflow-hidden shadow-lg animate-scale-in">
           <div className="p-8 md:p-10 text-white">
-            <h3 className="text-2xl md:text-3xl font-bold mb-6">
-              Trusted by Leading Organizations
+            <h3 className="text-2xl md:text-3xl font-bold mb-6 flex items-center">
+              <Star className="mr-3 h-6 w-6 text-sandGold" />
+              Trusted by Leading UAE Organizations
             </h3>
             <div className="grid md:grid-cols-2 gap-8">
               {testimonials.map((testimonial, index) => (
-                <div key={index} className="bg-white/10 backdrop-filter backdrop-blur-sm p-6 rounded-lg border border-white/20">
+                <div key={index} className="bg-white/10 backdrop-filter backdrop-blur-sm p-6 rounded-lg border border-white/20 hover:bg-white/15 transition-colors duration-300">
                   <blockquote className="mb-4 text-white/90 italic">
                     "{testimonial.quote}"
                   </blockquote>
@@ -157,13 +165,14 @@ const Trust = () => {
           </div>
         </div>
 
-        <div className="mt-16 text-center animate-fade-in">
-          <h3 className="text-xl font-semibold text-navyTrust mb-6">
+        <div className="mt-16 animate-fade-in">
+          <h3 className="text-xl font-semibold text-navyTrust mb-6 text-center">
+            <Award className="inline-block h-5 w-5 mr-2 text-mutedTeal" />
             Certifications & Compliance
           </h3>
           <div className="flex flex-wrap justify-center gap-4">
             {certifications.map((cert, index) => (
-              <div key={index} className="bg-white px-4 py-3 rounded-lg shadow-sm border border-softGray flex items-center">
+              <div key={index} className="bg-white px-4 py-3 rounded-lg shadow-sm border border-softGray flex items-center hover:shadow-md transition-all duration-300">
                 <div className="mr-2 text-mutedTeal">
                   <Shield className="h-5 w-5" />
                 </div>
@@ -171,6 +180,22 @@ const Trust = () => {
                   <div className="font-medium text-navyTrust">{cert.name}</div>
                   <div className="text-xs text-deepCharcoal/70">{cert.description}</div>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        <div className="mt-16 text-center">
+          <h3 className="text-xl font-semibold text-navyTrust mb-6">
+            Strategic Partners in the UAE
+          </h3>
+          <div className="bg-white rounded-xl shadow-sm p-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+            {partners.map((partner, index) => (
+              <div key={index} className="flex flex-col items-center justify-center">
+                <div className="h-16 w-16 bg-mutedTeal/10 rounded-full flex items-center justify-center mb-3">
+                  <div className="text-navyTrust text-xl font-bold">{partner.split(' ').map(word => word[0]).join('')}</div>
+                </div>
+                <div className="text-sm font-medium text-center text-navyTrust">{partner}</div>
               </div>
             ))}
           </div>
