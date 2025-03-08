@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Shield, FileText, Check, FileCheck, Scale, Gavel } from 'lucide-react';
@@ -8,7 +7,6 @@ const Hero = () => {
   const animationRef = useRef<HTMLDivElement>(null);
   const [activeFeature, setActiveFeature] = useState(0);
   
-  // Enhanced features with more professional legal icons and text
   const features = [
     { 
       icon: <FileCheck className="h-6 w-6 text-mutedTeal opacity-90 feature-icon-animation" />, 
@@ -58,7 +56,6 @@ const Hero = () => {
         color: string;
       }> = [];
       
-      // Create particles with UAE-inspired colors
       for (let i = 0; i < 30; i++) {
         particles.push({
           x: Math.random() * canvas.width,
@@ -67,7 +64,7 @@ const Hero = () => {
           speedX: (Math.random() - 0.5) * 0.5,
           speedY: (Math.random() - 0.5) * 0.5,
           opacity: Math.random() * 0.5 + 0.2,
-          color: ['#1A365D', '#2A9D8F', '#E9C46A', '#8A1538'][Math.floor(Math.random() * 4)] // Added UAE flag red
+          color: ['#1A365D', '#2A9D8F', '#E9C46A', '#8A1538'][Math.floor(Math.random() * 4)]
         });
       }
       
@@ -80,15 +77,12 @@ const Hero = () => {
           ctx.fillStyle = particle.color + Math.floor(particle.opacity * 255).toString(16).padStart(2, '0');
           ctx.fill();
           
-          // Update position
           particle.x += particle.speedX;
           particle.y += particle.speedY;
           
-          // Bounce off edges
           if (particle.x < 0 || particle.x > canvas.width) particle.speedX *= -1;
           if (particle.y < 0 || particle.y > canvas.height) particle.speedY *= -1;
           
-          // Connect particles - creates a network effect
           for (let j = i + 1; j < particles.length; j++) {
             const dx = particles[j].x - particle.x;
             const dy = particles[j].y - particle.y;
@@ -135,7 +129,7 @@ const Hero = () => {
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-navyTrust mb-6 leading-tight"
             />
             <p className="text-lg md:text-xl text-deepCharcoal/80 mb-8 max-w-xl">
-              The premier AI-driven legal automation platform focused on Sharia compliance in UAE & MENA regions.
+              Transform your legal practice with AI that understands Sharia principles as deeply as you do. Gain certainty, save precious time, and eliminate compliance risks across UAE & MENA regions.
             </p>
             <div className="flex flex-wrap gap-4 mb-8">
               <Link to="/demo" className="bg-mutedTeal text-white font-medium px-6 py-3 rounded-lg shadow-md flex items-center justify-center hover:bg-mutedTeal/90 transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg">
@@ -187,15 +181,12 @@ const Hero = () => {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="transform -rotate-6 opacity-90 floating-animation">
                     <div className="relative z-10 bg-white rounded-lg document-card-shadow p-5 max-w-xs feature-container">
-                      {/* Professional header with gold accent */}
                       <div className="flex items-center mb-4 pb-2 border-b border-softGray">
                         <div className="bg-gradient-to-r from-sandGold to-mutedTeal rounded-md p-1.5 mr-3 verification-badge">
                           <Shield className="h-5 w-5 text-white" />
                         </div>
                         <span className="font-semibold text-navyTrust text-lg">Document Verification</span>
                       </div>
-                      
-                      {/* Feature icons with enhanced animation */}
                       <div className="h-20 bg-gradient-to-r from-navyTrust/5 to-mutedTeal/5 rounded-md mb-4 flex items-center justify-center overflow-hidden">
                         <div className="flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${activeFeature * 100}%)` }}>
                           {features.map((feature, index) => (
@@ -209,15 +200,11 @@ const Hero = () => {
                           ))}
                         </div>
                       </div>
-                      
-                      {/* Document lines with enhanced styling */}
                       <div className="space-y-2 px-1">
                         <div className="h-3 bg-gradient-to-r from-mutedTeal/30 to-mutedTeal/10 rounded-full w-full animate-pulse-soft"></div>
                         <div className="h-3 bg-gradient-to-r from-navyTrust/30 to-navyTrust/10 rounded-full w-3/4 animate-pulse-soft" style={{ animationDelay: '0.2s' }}></div>
                         <div className="h-3 bg-gradient-to-r from-uaeRed/20 to-uaeRed/5 rounded-full w-5/6 animate-pulse-soft" style={{ animationDelay: '0.4s' }}></div>
                       </div>
-                      
-                      {/* Verification status indicator with enhanced styling */}
                       <div className="mt-5 flex space-x-2">
                         <div className="h-8 w-8 rounded-full bg-gradient-to-br from-green-100 to-green-50 flex items-center justify-center relative document-approval-animation shadow-sm">
                           <Check className="h-4 w-4 text-green-600" />
@@ -241,8 +228,6 @@ const Hero = () => {
                   </div>
                 </div>
               </div>
-              
-              {/* Enhanced background elements */}
               <div className="absolute -bottom-5 -right-5 h-24 w-24 rounded-full bg-gradient-to-br from-sandGold/40 to-sandGold/20 backdrop-blur-md border border-white/20 animate-rotate-slow"></div>
               <div className="absolute -top-8 -left-8 h-16 w-16 rounded-full bg-gradient-to-br from-mutedTeal/40 to-mutedTeal/20 backdrop-blur-md border border-white/20 animate-rotate-slow" style={{ animationDirection: 'reverse' }}></div>
               <div className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-gradient-to-br from-uaeRed/30 to-uaeRed/10 backdrop-blur-md border border-white/20 animate-pulse-soft"></div>
