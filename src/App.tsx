@@ -10,6 +10,11 @@ import Demo from "./pages/Demo";
 import Pricing from "./pages/Pricing";
 import ComingSoon from "./pages/ComingSoon";
 import NotFound from "./pages/NotFound";
+import Blog from "./pages/Blog";
+import CaseStudies from "./pages/CaseStudies";
+import ComplianceGuides from "./pages/ComplianceGuides";
+import Documentation from "./pages/Documentation";
+import API from "./pages/API";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +30,11 @@ const App = () => (
           <Route path="/demo" element={<Demo />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/coming-soon" element={<ComingSoon />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/case-studies" element={<CaseStudies />} />
+          <Route path="/compliance-guides" element={<ComplianceGuides />} />
+          <Route path="/documentation" element={<Documentation />} />
+          <Route path="/api" element={<API />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

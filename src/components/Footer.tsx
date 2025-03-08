@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Facebook, Twitter, Linkedin, Mail, Phone, MapPin, Instagram, Shield } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -106,7 +105,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <Link 
-                  to="/coming-soon" 
+                  to="/blog" 
                   className="text-white/70 hover:text-white transition-colors duration-300 flex items-center"
                 >
                   <span className="mr-2 w-1 h-1 bg-mutedTeal rounded-full"></span>
@@ -115,7 +114,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link 
-                  to="/coming-soon" 
+                  to="/case-studies" 
                   className="text-white/70 hover:text-white transition-colors duration-300 flex items-center"
                 >
                   <span className="mr-2 w-1 h-1 bg-mutedTeal rounded-full"></span>
@@ -124,7 +123,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link 
-                  to="/coming-soon" 
+                  to="/compliance-guides" 
                   className="text-white/70 hover:text-white transition-colors duration-300 flex items-center"
                 >
                   <span className="mr-2 w-1 h-1 bg-mutedTeal rounded-full"></span>
@@ -133,7 +132,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link 
-                  to="/coming-soon" 
+                  to="/documentation" 
                   className="text-white/70 hover:text-white transition-colors duration-300 flex items-center"
                 >
                   <span className="mr-2 w-1 h-1 bg-mutedTeal rounded-full"></span>
@@ -142,7 +141,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link 
-                  to="/coming-soon" 
+                  to="/api" 
                   className="text-white/70 hover:text-white transition-colors duration-300 flex items-center"
                 >
                   <span className="mr-2 w-1 h-1 bg-mutedTeal rounded-full"></span>
