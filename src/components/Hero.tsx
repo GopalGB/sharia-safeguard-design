@@ -163,7 +163,7 @@ const Hero = () => {
                         <span className="font-semibold text-navyTrust">Document Verification</span>
                       </div>
                       <div className="h-16 bg-mutedTeal/10 rounded-md mb-4 flex items-center justify-center">
-                        <FileText className="h-6 w-6 text-mutedTeal opacity-70" />
+                        <FileText className="h-6 w-6 text-mutedTeal opacity-70 animate-pulse-soft" />
                       </div>
                       <div className="space-y-2">
                         <div className="h-3 bg-mutedTeal/20 rounded-full w-full animate-pulse-soft"></div>
@@ -171,10 +171,15 @@ const Hero = () => {
                         <div className="h-3 bg-mutedTeal/20 rounded-full w-5/6 animate-pulse-soft" style={{ animationDelay: '0.4s' }}></div>
                       </div>
                       <div className="mt-4 flex space-x-2">
-                        <div className="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center">
+                        <div className="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center relative document-approval-animation">
                           <Check className="h-4 w-4 text-green-600" />
+                          <div className="absolute inset-0 rounded-full bg-green-400/30 animate-ping opacity-75" style={{ animationDuration: '1.5s' }}></div>
                         </div>
-                        <div className="flex-1 h-8 bg-navyTrust/10 rounded-md"></div>
+                        <div className="flex-1 h-8 bg-navyTrust/10 rounded-md flex items-center px-3">
+                          <span className="text-xs text-navyTrust font-medium animate-typing overflow-hidden whitespace-nowrap">
+                            Sharia compliant
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>

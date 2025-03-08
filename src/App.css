@@ -1,3 +1,4 @@
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -39,4 +40,22 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.floating-animation {
+  animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0%, 100% {
+    transform: translate(0, 0) rotate(-6deg);
+  }
+  50% {
+    transform: translate(0, -10px) rotate(-5deg);
+  }
+}
+
+.document-approval-animation .animate-ping {
+  animation-duration: 1.5s;
+  animation-iteration-count: 3;
 }

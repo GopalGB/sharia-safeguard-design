@@ -198,6 +198,14 @@ export default {
 						boxShadow: '0 0 0 10px rgba(42, 157, 143, 0.2)'
 					}
 				},
+				'typing': {
+					'0%': {
+						width: '0%'
+					},
+					'100%': {
+						width: '100%'
+					}
+				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -213,6 +221,7 @@ export default {
 				'shimmer': 'shimmer 3s infinite linear',
 				'float': 'float 4s infinite ease-in-out',
 				'highlight-pulse': 'highlight-pulse 2s infinite ease-in-out',
+				'typing': 'typing 2s steps(20, end) forwards',
 			},
 			backgroundImage: {
 				'geometric-pattern': "url('/geometric-pattern.svg')",
