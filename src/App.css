@@ -1,3 +1,4 @@
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -57,4 +58,77 @@
 .document-approval-animation .animate-ping {
   animation-duration: 1.5s;
   animation-iteration-count: 3;
+}
+
+/* New animations for document verification */
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes elegant-fade {
+  0%, 100% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes subtle-scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.feature-icon-animation {
+  animation: elegant-fade 2s infinite, subtle-scale 3s infinite;
+}
+
+.feature-slide-in {
+  animation: slide-in 0.5s forwards;
+}
+
+.feature-container {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(26, 54, 93, 0.1);
+  transition: all 0.3s ease;
+}
+
+.feature-container:hover {
+  box-shadow: 0 8px 24px rgba(26, 54, 93, 0.15);
+  transform: translateY(-2px);
+}
+
+.verification-badge {
+  position: relative;
+}
+
+.verification-badge::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 8px;
+  height: 8px;
+  background-color: #00732F;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px white;
+}
+
+.document-card-shadow {
+  box-shadow: 0 8px 30px rgba(26, 54, 93, 0.12);
 }

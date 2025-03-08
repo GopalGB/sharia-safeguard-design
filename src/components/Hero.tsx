@@ -1,17 +1,31 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Shield, FileText, Check } from 'lucide-react';
+import { ArrowRight, Shield, FileText, Check, FileCheck, Scale, Gavel } from 'lucide-react';
 import TypedHeading from "./TypedHeading";
 
 const Hero = () => {
   const animationRef = useRef<HTMLDivElement>(null);
   const [activeFeature, setActiveFeature] = useState(0);
   
+  // Enhanced features with more professional legal icons and text
   const features = [
-    { icon: <FileText className="h-6 w-6 text-mutedTeal opacity-70" />, text: "Sharia compliant" },
-    { icon: <Shield className="h-6 w-6 text-mutedTeal opacity-70" />, text: "Verified contract" },
-    { icon: <Check className="h-6 w-6 text-mutedTeal opacity-70" />, text: "Legal approved" }
+    { 
+      icon: <FileCheck className="h-6 w-6 text-mutedTeal opacity-90 feature-icon-animation" />, 
+      text: "Sharia compliant" 
+    },
+    { 
+      icon: <Shield className="h-6 w-6 text-navyTrust opacity-90 feature-icon-animation" />, 
+      text: "Verified contract" 
+    },
+    { 
+      icon: <Scale className="h-6 w-6 text-uaeRed opacity-90 feature-icon-animation" />, 
+      text: "Legal approved" 
+    },
+    { 
+      icon: <Gavel className="h-6 w-6 text-mutedCoral opacity-90 feature-icon-animation" />, 
+      text: "Court validated" 
+    }
   ];
 
   useEffect(() => {
@@ -171,35 +185,52 @@ const Hero = () => {
             <div className="relative">
               <div ref={animationRef} className="aspect-square md:aspect-auto md:h-[500px] rounded-2xl bg-gradient-to-br from-navyTrust/10 to-mutedTeal/10 backdrop-blur-sm border border-white/30 shadow-xl flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="transform -rotate-6 opacity-80 floating-animation">
-                    <div className="relative z-10 bg-white rounded-lg shadow-lg p-5 max-w-xs">
-                      <div className="flex items-center mb-4">
-                        <Shield className="h-6 w-6 text-mutedTeal mr-3" />
-                        <span className="font-semibold text-navyTrust">Document Verification</span>
+                  <div className="transform -rotate-6 opacity-90 floating-animation">
+                    <div className="relative z-10 bg-white rounded-lg document-card-shadow p-5 max-w-xs feature-container">
+                      {/* Professional header with gold accent */}
+                      <div className="flex items-center mb-4 pb-2 border-b border-softGray">
+                        <div className="bg-gradient-to-r from-sandGold to-mutedTeal rounded-md p-1.5 mr-3 verification-badge">
+                          <Shield className="h-5 w-5 text-white" />
+                        </div>
+                        <span className="font-semibold text-navyTrust text-lg">Document Verification</span>
                       </div>
-                      <div className="h-16 bg-mutedTeal/10 rounded-md mb-4 flex items-center justify-center overflow-hidden">
-                        <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${activeFeature * 100}%)` }}>
+                      
+                      {/* Feature icons with enhanced animation */}
+                      <div className="h-20 bg-gradient-to-r from-navyTrust/5 to-mutedTeal/5 rounded-md mb-4 flex items-center justify-center overflow-hidden">
+                        <div className="flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${activeFeature * 100}%)` }}>
                           {features.map((feature, index) => (
-                            <div key={index} className="h-16 w-full flex-shrink-0 flex items-center justify-center">
+                            <div 
+                              key={index} 
+                              className="h-20 w-full flex-shrink-0 flex items-center justify-center"
+                              style={{ animation: activeFeature === index ? 'feature-slide-in 0.5s forwards' : 'none' }}
+                            >
                               {feature.icon}
                             </div>
                           ))}
                         </div>
                       </div>
-                      <div className="space-y-2">
-                        <div className="h-3 bg-mutedTeal/20 rounded-full w-full animate-pulse-soft"></div>
-                        <div className="h-3 bg-mutedTeal/20 rounded-full w-3/4 animate-pulse-soft" style={{ animationDelay: '0.2s' }}></div>
-                        <div className="h-3 bg-mutedTeal/20 rounded-full w-5/6 animate-pulse-soft" style={{ animationDelay: '0.4s' }}></div>
+                      
+                      {/* Document lines with enhanced styling */}
+                      <div className="space-y-2 px-1">
+                        <div className="h-3 bg-gradient-to-r from-mutedTeal/30 to-mutedTeal/10 rounded-full w-full animate-pulse-soft"></div>
+                        <div className="h-3 bg-gradient-to-r from-navyTrust/30 to-navyTrust/10 rounded-full w-3/4 animate-pulse-soft" style={{ animationDelay: '0.2s' }}></div>
+                        <div className="h-3 bg-gradient-to-r from-uaeRed/20 to-uaeRed/5 rounded-full w-5/6 animate-pulse-soft" style={{ animationDelay: '0.4s' }}></div>
                       </div>
-                      <div className="mt-4 flex space-x-2">
-                        <div className="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center relative document-approval-animation">
+                      
+                      {/* Verification status indicator with enhanced styling */}
+                      <div className="mt-5 flex space-x-2">
+                        <div className="h-8 w-8 rounded-full bg-gradient-to-br from-green-100 to-green-50 flex items-center justify-center relative document-approval-animation shadow-sm">
                           <Check className="h-4 w-4 text-green-600" />
                           <div className="absolute inset-0 rounded-full bg-green-400/30 animate-ping opacity-75" style={{ animationDuration: '1.5s' }}></div>
                         </div>
-                        <div className="flex-1 h-8 bg-navyTrust/10 rounded-md flex items-center px-3 overflow-hidden">
-                          <div className="flex transition-transform duration-500 ease-in-out w-full" style={{ transform: `translateX(-${activeFeature * 100}%)` }}>
+                        <div className="flex-1 h-8 bg-gradient-to-r from-navyTrust/10 to-mutedTeal/5 rounded-md flex items-center px-3 overflow-hidden shadow-sm">
+                          <div className="flex transition-transform duration-700 ease-in-out w-full" style={{ transform: `translateX(-${activeFeature * 100}%)` }}>
                             {features.map((feature, index) => (
-                              <span key={index} className="text-xs text-navyTrust font-medium whitespace-nowrap flex-shrink-0 w-full">
+                              <span 
+                                key={index} 
+                                className="text-xs text-navyTrust font-medium whitespace-nowrap flex-shrink-0 w-full"
+                                style={{ animation: activeFeature === index ? 'feature-slide-in 0.5s forwards' : 'none' }}
+                              >
                                 {feature.text}
                               </span>
                             ))}
@@ -210,9 +241,11 @@ const Hero = () => {
                   </div>
                 </div>
               </div>
-              <div className="absolute -bottom-5 -right-5 h-24 w-24 rounded-full bg-sandGold/30 backdrop-blur-md border border-white/20 animate-rotate-slow"></div>
-              <div className="absolute -top-8 -left-8 h-16 w-16 rounded-full bg-mutedTeal/30 backdrop-blur-md border border-white/20 animate-rotate-slow" style={{ animationDirection: 'reverse' }}></div>
-              <div className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-[#8A1538]/20 backdrop-blur-md border border-white/20 animate-pulse-soft"></div>
+              
+              {/* Enhanced background elements */}
+              <div className="absolute -bottom-5 -right-5 h-24 w-24 rounded-full bg-gradient-to-br from-sandGold/40 to-sandGold/20 backdrop-blur-md border border-white/20 animate-rotate-slow"></div>
+              <div className="absolute -top-8 -left-8 h-16 w-16 rounded-full bg-gradient-to-br from-mutedTeal/40 to-mutedTeal/20 backdrop-blur-md border border-white/20 animate-rotate-slow" style={{ animationDirection: 'reverse' }}></div>
+              <div className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-gradient-to-br from-uaeRed/30 to-uaeRed/10 backdrop-blur-md border border-white/20 animate-pulse-soft"></div>
             </div>
           </div>
         </div>
