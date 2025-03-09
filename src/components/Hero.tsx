@@ -124,12 +124,12 @@ const Hero = () => {
               Stop Risking Non-Compliance
             </div>
             <TypedHeading 
-              englishText="Your reputation is at stake."
-              arabicText="سمعتك على المحك"
+              englishText="Code & Creed. Perfected."
+              arabicText="الرمز والعقيدة. مُتقَن."
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-navyTrust mb-6 leading-tight"
             />
             <p className="text-lg md:text-xl text-deepCharcoal/80 mb-8 max-w-xl">
-              Your reputation is at stake. Don't let hidden compliance errors cost you clients. Our AI catches what humans miss – in half the time.
+              Missing one compliance detail can destroy your reputation. Our AI finds what others miss.
             </p>
             <div className="flex flex-wrap gap-4 mb-8">
               <Link to="/demo" className="bg-mutedTeal text-white font-medium px-6 py-3 rounded-lg shadow-md flex items-center justify-center hover:bg-mutedTeal/90 transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg">
