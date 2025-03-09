@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Shield, FileText, Check, FileCheck, Scale, Gavel } from 'lucide-react';
@@ -121,23 +122,23 @@ const Hero = () => {
         <div className="flex flex-col md:flex-row md:items-center">
           <div className="md:w-1/2 md:pr-8 animate-slide-up">
             <div className="inline-block bg-mutedTeal/10 text-mutedTeal px-3 py-1 rounded-full text-sm font-medium mb-6">
-              AI-Powered Sharia Compliance
+              Stop Risking Non-Compliance
             </div>
             <TypedHeading 
-              englishText="Code & Creed. Perfected."
-              arabicText="القانون والعقيدة. الكمال"
+              englishText="Certainty in Seconds."
+              arabicText="اليقين في ثوان"
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-navyTrust mb-6 leading-tight"
             />
             <p className="text-lg md:text-xl text-deepCharcoal/80 mb-8 max-w-xl">
-              Transform your legal practice with AI that understands Sharia principles as deeply as you do. Gain certainty, save precious time, and eliminate compliance risks across UAE & MENA regions.
+              Your reputation is at stake. Don't let hidden compliance errors cost you clients. Our AI catches what humans miss – in half the time.
             </p>
             <div className="flex flex-wrap gap-4 mb-8">
               <Link to="/demo" className="bg-mutedTeal text-white font-medium px-6 py-3 rounded-lg shadow-md flex items-center justify-center hover:bg-mutedTeal/90 transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg">
-                Request Demo
+                Eliminate Risk Now
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
               <a href="#features" className="border border-deepCharcoal/20 text-deepCharcoal font-medium px-6 py-3 rounded-lg flex items-center justify-center hover:bg-deepCharcoal/5 transition-all duration-300 transform hover:-translate-y-0.5">
-                Learn More
+                See How It Works
               </a>
             </div>
             <div className="grid grid-cols-2 gap-4 max-w-md">
@@ -146,7 +147,7 @@ const Hero = () => {
                   <Check className="h-4 w-4 text-mutedTeal" />
                 </div>
                 <div className="ml-2">
-                  <p className="text-sm text-deepCharcoal font-medium">98% Accuracy in Arabic NLP</p>
+                  <p className="text-sm text-deepCharcoal font-medium">98% Accuracy Rate</p>
                 </div>
               </div>
               <div className="flex items-start group hover:transform hover:translate-x-1 transition-all duration-300">
@@ -162,7 +163,7 @@ const Hero = () => {
                   <Check className="h-4 w-4 text-mutedTeal" />
                 </div>
                 <div className="ml-2">
-                  <p className="text-sm text-deepCharcoal font-medium">Bilingual Support</p>
+                  <p className="text-sm text-deepCharcoal font-medium">60% Time Saved</p>
                 </div>
               </div>
               <div className="flex items-start group hover:transform hover:translate-x-1 transition-all duration-300">
@@ -170,7 +171,7 @@ const Hero = () => {
                   <Check className="h-4 w-4 text-mutedTeal" />
                 </div>
                 <div className="ml-2">
-                  <p className="text-sm text-deepCharcoal font-medium">Sharia Compliant</p>
+                  <p className="text-sm text-deepCharcoal font-medium">Zero Compliance Risk</p>
                 </div>
               </div>
             </div>
@@ -185,7 +186,7 @@ const Hero = () => {
                         <div className="bg-gradient-to-r from-sandGold to-mutedTeal rounded-md p-1.5 mr-3 verification-badge">
                           <Shield className="h-5 w-5 text-white" />
                         </div>
-                        <span className="font-semibold text-navyTrust text-lg">Document Verification</span>
+                        <span className="font-semibold text-navyTrust text-lg">Instant Verification</span>
                       </div>
                       <div className="h-20 bg-gradient-to-r from-navyTrust/5 to-mutedTeal/5 rounded-md mb-4 flex items-center justify-center overflow-hidden">
                         <div className="flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${activeFeature * 100}%)` }}>

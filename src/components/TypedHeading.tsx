@@ -15,7 +15,7 @@ const TypedHeading: React.FC<TypedHeadingProps> = ({
   const [currentText, setCurrentText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [isEnglish, setIsEnglish] = useState(true);
-  const [typingSpeed, setTypingSpeed] = useState(150);
+  const [typingSpeed, setTypingSpeed] = useState(100); // Faster initial typing
   
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -26,23 +26,23 @@ const TypedHeading: React.FC<TypedHeadingProps> = ({
       // When deleting
       if (isDeleting) {
         setCurrentText(prev => prev.substring(0, prev.length - 1));
-        setTypingSpeed(60); // Faster deletion
+        setTypingSpeed(35); // Faster deletion
         
         // When done deleting, switch language and start typing again
         if (currentText === '') {
           setIsDeleting(false);
           setIsEnglish(!isEnglish);
-          setTypingSpeed(150);
+          setTypingSpeed(100);
         }
       } 
       // When typing
       else {
         setCurrentText(prev => currentFullText.substring(0, prev.length + 1));
-        setTypingSpeed(150); // Normal typing speed
+        setTypingSpeed(100); // Normal typing speed
         
         // When done typing current language, pause then start deleting
         if (currentText === currentFullText) {
-          setTypingSpeed(1500); // Pause before deletion
+          setTypingSpeed(2000); // Longer pause before deletion
           setIsDeleting(true);
         }
       }
