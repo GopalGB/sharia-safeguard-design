@@ -10,6 +10,7 @@ import FAQ from '@/components/FAQ';
 import Trust from '@/components/Trust';
 import Footer from '@/components/Footer';
 import FloatingCTA from '@/components/FloatingCTA';
+import PageTransition from '@/components/PageTransition';
 
 const Index = () => {
   useEffect(() => {
@@ -52,20 +53,22 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar />
-      <main className="flex-grow">
-        <Hero />
-        <Features />
-        <HowItWorks />
-        <Solutions />
-        <Integrations />
-        <FAQ />
-        <Trust />
-      </main>
-      <Footer />
-      <FloatingCTA />
-    </div>
+    <PageTransition>
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <main className="flex-grow">
+          <Hero />
+          <Features />
+          <HowItWorks />
+          <Solutions />
+          <Integrations />
+          <FAQ />
+          <Trust />
+        </main>
+        <Footer />
+        <FloatingCTA />
+      </div>
+    </PageTransition>
   );
 };
 
