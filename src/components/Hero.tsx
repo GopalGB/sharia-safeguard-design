@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Shield, FileText, Check, FileCheck, Scale, Gavel } from 'lucide-react';
@@ -125,8 +124,8 @@ const Hero = () => {
               Stop Risking Non-Compliance
             </div>
             <TypedHeading 
-              englishText="Certainty in Seconds."
-              arabicText="اليقين في ثوان"
+              englishText="Your reputation is at stake."
+              arabicText="سمعتك على المحك"
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-navyTrust mb-6 leading-tight"
             />
             <p className="text-lg md:text-xl text-deepCharcoal/80 mb-8 max-w-xl">
