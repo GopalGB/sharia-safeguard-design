@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { FileUp, Search, ClipboardCheck, CheckCircle, ArrowRight, PlayCircle, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -236,72 +237,9 @@ const HowItWorks = () => {
         <div className={`max-w-7xl mx-auto transition-all duration-1000 ${
           visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
-          <div className="flex flex-col lg:flex-row gap-12">
-            <div className="lg:w-1/3 order-2 lg:order-1">
-              <div className="sticky top-32">
-                <div className="relative">
-                  <div className="absolute top-0 bottom-0 left-7 w-1 bg-gradient-to-b from-mutedTeal/20 via-mutedTeal to-mutedTeal/20 z-0"></div>
-                  
-                  <div className="space-y-12 relative z-10">
-                    {steps.map((step, index) => (
-                      <PageTransition key={index} delay={index * 200 + 100} direction="left">
-                        <div 
-                          className={`flex items-start transition-all duration-500 ${
-                            visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
-                          } ${activeStep === index ? 'scale-110 translate-x-2' : ''} ${hoveredStep === index ? 'transform translate-x-1' : ''}`}
-                          onMouseEnter={() => setHoveredStep(index)}
-                          onMouseLeave={() => setHoveredStep(null)}
-                          onClick={() => setActiveStep(index)}
-                        >
-                          <div 
-                            className={`relative flex-shrink-0 bg-white rounded-full p-4 shadow-md mb-6 border border-softGray mr-4 transition-all duration-300 cursor-pointer group 
-                            ${activeStep === index ? 'bg-mutedTeal border-mutedTeal' : ''}
-                            ${hoveredStep === index ? 'shadow-lg bg-mutedTeal/5 border-mutedTeal/30 animate-border-glow' : ''}`}
-                          >
-                            <div className={`transition-transform duration-300 ${
-                              hoveredStep === index || activeStep === index ? 'text-mutedTeal animate-bounce-subtle' : ''
-                            } ${activeStep === index ? 'text-white' : ''}`}>
-                              {step.icon}
-                            </div>
-                            <span className={`absolute top-0 -right-1 inline-block bg-mutedTeal text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 ${
-                              hoveredStep === index || activeStep === index ? 'animate-highlight-pulse' : ''
-                            }`}>
-                              {index + 1}
-                            </span>
-                          </div>
-                          
-                          <div className={`flex flex-col pt-3 ${activeStep === index ? 'transform scale-105' : ''}`}>
-                            <h3 className={`text-lg font-bold mb-1 transition-all duration-300 ${
-                              activeStep === index ? 'text-mutedTeal' : 'text-navyTrust'
-                            } ${hoveredStep === index ? 'text-mutedTeal' : ''}`}>
-                              {step.title}
-                            </h3>
-                            <p className={`text-sm transition-all duration-300 ${
-                              hoveredStep === index || activeStep === index ? 'text-deepCharcoal' : 'text-deepCharcoal/70'
-                            }`}>
-                              {step.description}
-                            </p>
-                          </div>
-                        </div>
-                      </PageTransition>
-                    ))}
-                  </div>
-                  
-                  <div className="mt-8 text-center">
-                    <Link 
-                      to="/demo" 
-                      className="inline-flex items-center bg-mutedTeal text-white px-4 py-2 rounded-lg shadow-sm hover:bg-mutedTeal/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg group ripple-button overflow-hidden relative"
-                    >
-                      <span className="relative z-10">Start Your Journey</span>
-                      <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1 relative z-10" />
-                      <span className="absolute inset-0 bg-gradient-to-r from-navyTrust to-mutedTeal opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="lg:w-2/3 order-1 lg:order-2">
+          <div className="flex flex-col md:flex-row gap-12">
+            {/* Main content on the left */}
+            <div className="md:w-2/3">
               <div className="flex flex-col items-start mb-8">
                 <div className="inline-block bg-mutedTeal/10 text-mutedTeal px-3 py-1 rounded-full text-sm font-medium mb-4 animate-border-glow">
                   Simple Process
@@ -315,6 +253,7 @@ const HowItWorks = () => {
                 </p>
               </div>
               
+              {/* Content display area */}
               <div className="bg-lightSand rounded-xl p-6 shadow-lg min-h-[400px]">
                 {activeStep === null ? (
                   <div className="flex items-center justify-center h-full">
@@ -323,7 +262,7 @@ const HowItWorks = () => {
                         <PlayCircle className="h-20 w-20 mx-auto animate-pulse-soft" />
                       </div>
                       <h3 className="text-xl font-semibold text-navyTrust mb-2">Explore Our Process</h3>
-                      <p className="text-deepCharcoal/70 mb-6">Select a step from the left to see how it works</p>
+                      <p className="text-deepCharcoal/70 mb-6">Select a step from the right to see how it works</p>
                       <div className="flex justify-center">
                         <button
                           onClick={() => setActiveStep(0)}
@@ -335,7 +274,7 @@ const HowItWorks = () => {
                     </div>
                   </div>
                 ) : (
-                  <PageTransition key={activeStep} direction="right">
+                  <PageTransition key={activeStep} direction="left">
                     <div className="space-y-4">
                       <div className="flex items-center mb-4">
                         <div className="w-10 h-10 rounded-full bg-mutedTeal flex items-center justify-center text-white mr-3">
@@ -375,9 +314,81 @@ const HowItWorks = () => {
                 )}
               </div>
             </div>
+            
+            {/* Vertical steps on the right */}
+            <div className="md:w-1/3">
+              <div className="sticky top-32">
+                <div className="relative">
+                  {/* Connecting line */}
+                  <div className="absolute top-0 bottom-0 left-7 w-1 bg-gradient-to-b from-mutedTeal/20 via-mutedTeal to-mutedTeal/20 z-0"></div>
+                  
+                  {/* Steps */}
+                  <div className="space-y-12 relative z-10">
+                    {steps.map((step, index) => (
+                      <PageTransition key={index} delay={index * 200 + 100} direction="right">
+                        <div 
+                          className={`flex items-start transition-all duration-500 ${
+                            visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+                          } ${activeStep === index ? 'scale-110 -translate-x-2' : ''} ${hoveredStep === index ? 'transform -translate-x-1' : ''}`}
+                          onMouseEnter={() => setHoveredStep(index)}
+                          onMouseLeave={() => setHoveredStep(null)}
+                          onClick={() => setActiveStep(index)}
+                        >
+                          <div 
+                            className={`relative flex-shrink-0 bg-white rounded-full p-4 shadow-md mb-6 border border-softGray mr-4 transition-all duration-300 cursor-pointer group 
+                            ${activeStep === index ? 'bg-mutedTeal border-mutedTeal' : ''}
+                            ${hoveredStep === index ? 'shadow-lg bg-mutedTeal/5 border-mutedTeal/30 animate-border-glow' : ''}`}
+                          >
+                            <div className={`transition-transform duration-300 ${
+                              hoveredStep === index || activeStep === index ? 'text-mutedTeal animate-bounce-subtle' : ''
+                            } ${activeStep === index ? 'text-white' : ''}`}>
+                              {step.icon}
+                            </div>
+                            <span className={`absolute top-0 -right-1 inline-block bg-mutedTeal text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 ${
+                              hoveredStep === index || activeStep === index ? 'animate-highlight-pulse' : ''
+                            }`}>
+                              {index + 1}
+                            </span>
+                          </div>
+                          
+                          <div className={`flex flex-col pt-3 ${activeStep === index ? 'transform scale-105' : ''}`}>
+                            <h3 className={`text-lg font-bold mb-1 transition-all duration-300 ${
+                              activeStep === index ? 'text-mutedTeal' : 'text-navyTrust'
+                            } ${hoveredStep === index ? 'text-mutedTeal' : ''}`}>
+                              {step.title}
+                            </h3>
+                            <p className={`text-sm transition-all duration-300 ${
+                              hoveredStep === index || activeStep === index ? 'text-deepCharcoal' : 'text-deepCharcoal/70'
+                            }`}>
+                              {step.description}
+                            </p>
+                          </div>
+                        </div>
+                      </PageTransition>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* CTA button at the bottom */}
+                <PageTransition delay={800} direction="right">
+                  <div className="mt-8 text-center">
+                    <Link 
+                      to="/demo" 
+                      className="inline-flex items-center bg-mutedTeal text-white px-4 py-2 rounded-lg shadow-sm hover:bg-mutedTeal/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg group ripple-button overflow-hidden relative"
+                    >
+                      <span className="relative z-10">Start Your Journey</span>
+                      <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1 relative z-10" />
+                      <span className="absolute inset-0 bg-gradient-to-r from-navyTrust to-mutedTeal opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+                    </Link>
+                  </div>
+                </PageTransition>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      
+      {/* We're removing the separate Dialog component since we've incorporated the demo directly in the main content area */}
     </section>
   );
 };
