@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { FileUp, Search, ClipboardCheck, CheckCircle, ArrowRight, PlayCircle, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogClose } from "@/components/ui/dialog";
+import PageTransition from './PageTransition';
 
 const HowItWorks = () => {
   const [hoveredStep, setHoveredStep] = useState<number | null>(null);
@@ -233,154 +234,161 @@ const HowItWorks = () => {
   return (
     <section id="how-it-works" className="py-20 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-1000 ${
+        <div className={`max-w-7xl mx-auto transition-all duration-1000 ${
           visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
-          <div className="inline-block bg-mutedTeal/10 text-mutedTeal px-3 py-1 rounded-full text-sm font-medium mb-4 animate-border-glow">
-            Simple Process
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-navyTrust mb-6 relative">
-            How ShariaGuard Works
-            <span className="absolute bottom-0 left-1/2 w-24 h-1 bg-gradient-to-r from-mutedTeal to-navyTrust transform -translate-x-1/2 animate-gradient-shift"></span>
-          </h2>
-          <p className="text-lg text-deepCharcoal/80">
-            Experience seamless compliance in four simple steps.
-          </p>
-        </div>
-        
-        <div className="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto relative">
-          {/* Connecting line with animated pulse effect */}
-          <div className="hidden md:block absolute top-1/4 left-0 right-0 h-1 bg-gradient-to-r from-mutedTeal/20 via-mutedTeal to-mutedTeal/20 z-0 overflow-hidden animate-gradient-shift" style={{ backgroundSize: '200% 100%' }}>
-            <div className="absolute inset-0 bg-white/50 animate-shimmer" style={{ backgroundSize: '200% 100%' }}></div>
-          </div>
-          
-          {steps.map((step, index) => (
-            <div 
-              key={index} 
-              className={`relative z-10 flex flex-col items-center text-center transition-all duration-700 ${
-                visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
-              } ${hoveredStep === index ? 'transform -translate-y-3 scale-105' : ''}`}
-              style={{ transitionDelay: `${index * 200}ms` }}
-              onMouseEnter={() => setHoveredStep(index)}
-              onMouseLeave={() => setHoveredStep(null)}
-            >
-              <div 
-                className={`bg-white rounded-full p-6 shadow-md mb-6 border border-softGray transition-all duration-300 cursor-pointer group ${
-                  hoveredStep === index ? 'shadow-lg bg-mutedTeal/5 border-mutedTeal/30 animate-border-glow' : ''
-                }`}
-                onClick={() => setActiveStep(index)}
-              >
-                <div className={`transition-transform duration-300 ${
-                  hoveredStep === index ? 'animate-bounce-subtle' : ''
-                }`}>
-                  {step.icon}
+          <div className="flex flex-col md:flex-row gap-12">
+            {/* Main content on the left */}
+            <div className="md:w-2/3">
+              <div className="flex flex-col items-start mb-8">
+                <div className="inline-block bg-mutedTeal/10 text-mutedTeal px-3 py-1 rounded-full text-sm font-medium mb-4 animate-border-glow">
+                  Simple Process
                 </div>
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="bg-mutedTeal/90 rounded-full p-2">
-                    <PlayCircle className="h-6 w-6 text-white" />
-                  </div>
-                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-navyTrust mb-6 relative text-left">
+                  How ShariaGuard Works
+                  <span className="absolute bottom-0 left-0 w-24 h-1 bg-gradient-to-r from-mutedTeal to-navyTrust transform animate-gradient-shift"></span>
+                </h2>
+                <p className="text-lg text-deepCharcoal/80 text-left">
+                  Experience seamless compliance in four simple steps.
+                </p>
               </div>
-              <span className={`inline-block bg-mutedTeal text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold mb-4 absolute top-0 -right-1 transition-all duration-300 ${
-                hoveredStep === index ? 'animate-highlight-pulse' : ''
-              }`}>
-                {index + 1}
-              </span>
-              <h3 className={`text-xl font-bold mb-3 transition-all duration-300 ${
-                hoveredStep === index ? 'text-mutedTeal transform scale-110' : 'text-navyTrust'
-              }`}>{step.title}</h3>
-              <p className={`transition-all duration-300 ${
-                hoveredStep === index ? 'text-deepCharcoal' : 'text-deepCharcoal/80'
-              }`}>{step.description}</p>
               
-              {/* Interactive button */}
-              <button
-                onClick={() => setActiveStep(index)}
-                className={`mt-4 flex items-center justify-center px-4 py-2 bg-white border border-mutedTeal/30 rounded-md text-sm text-mutedTeal hover:bg-mutedTeal/5 transition-all duration-300 ${
-                  hoveredStep === index ? 'opacity-100 translate-y-0' : 'opacity-0 transform translate-y-5'
-                }`}
-              >
-                See in action <PlayCircle className="ml-1 h-4 w-4" />
-              </button>
-              
-              {/* Animated arrow */}
-              <div className={`mt-4 transition-all duration-300 ${
-                hoveredStep === index && index < steps.length - 1 ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-5'
-              }`}>
-                {index < steps.length - 1 && (
-                  <div className="animate-pulse-soft">
-                    <ArrowRight className="h-5 w-5 text-mutedTeal" />
-                  </div>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-        
-        {/* Demo Dialog */}
-        <Dialog open={activeStep !== null} onOpenChange={(open) => !open && setActiveStep(null)}>
-          <DialogContent className="sm:max-w-2xl">
-            <DialogHeader>
-              <DialogTitle className="text-lg md:text-xl font-bold text-navyTrust flex items-center">
-                {activeStep !== null && (
-                  <>
-                    <div className="w-8 h-8 rounded-full bg-mutedTeal flex items-center justify-center text-white mr-2">
-                      {activeStep + 1}
+              {/* Content display area */}
+              <div className="bg-lightSand rounded-xl p-6 shadow-lg min-h-[400px]">
+                {activeStep === null ? (
+                  <div className="flex items-center justify-center h-full">
+                    <div className="text-center">
+                      <div className="text-mutedTeal mb-4">
+                        <PlayCircle className="h-20 w-20 mx-auto animate-pulse-soft" />
+                      </div>
+                      <h3 className="text-xl font-semibold text-navyTrust mb-2">Explore Our Process</h3>
+                      <p className="text-deepCharcoal/70 mb-6">Select a step from the right to see how it works</p>
+                      <div className="flex justify-center">
+                        <button
+                          onClick={() => setActiveStep(0)}
+                          className="px-4 py-2 bg-mutedTeal text-white rounded-md hover:bg-mutedTeal/90 transition-colors"
+                        >
+                          Start Tour
+                        </button>
+                      </div>
                     </div>
-                    {steps[activeStep]?.demo.title}
-                  </>
+                  </div>
+                ) : (
+                  <PageTransition key={activeStep} direction="left">
+                    <div className="space-y-4">
+                      <div className="flex items-center mb-4">
+                        <div className="w-10 h-10 rounded-full bg-mutedTeal flex items-center justify-center text-white mr-3">
+                          {activeStep + 1}
+                        </div>
+                        <h3 className="text-xl font-bold text-navyTrust">{steps[activeStep]?.demo.title}</h3>
+                      </div>
+                      {steps[activeStep]?.demo.content}
+                      
+                      <div className="flex justify-between mt-8 pt-4 border-t border-gray-200">
+                        <button
+                          onClick={() => setActiveStep(prev => (prev !== null && prev > 0) ? prev - 1 : null)}
+                          disabled={activeStep === 0}
+                          className="px-4 py-2 border border-gray-300 rounded-md flex items-center disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 transition-colors"
+                        >
+                          <ArrowRight className="h-4 w-4 transform rotate-180 mr-2" /> Previous
+                        </button>
+                        
+                        {activeStep < steps.length - 1 ? (
+                          <button
+                            onClick={() => setActiveStep(prev => (prev !== null && prev < steps.length - 1) ? prev + 1 : null)}
+                            className="px-4 py-2 bg-mutedTeal text-white rounded-md flex items-center hover:bg-mutedTeal/90 transition-colors"
+                          >
+                            Next <ArrowRight className="h-4 w-4 ml-2" />
+                          </button>
+                        ) : (
+                          <Link 
+                            to="/demo" 
+                            className="px-4 py-2 bg-mutedTeal text-white rounded-md flex items-center hover:bg-mutedTeal/90 transition-colors"
+                          >
+                            Try It Now <ArrowRight className="h-4 w-4 ml-2" />
+                          </Link>
+                        )}
+                      </div>
+                    </div>
+                  </PageTransition>
                 )}
-              </DialogTitle>
-              <DialogDescription>
-                See how this step works in the ShariaGuard platform
-              </DialogDescription>
-            </DialogHeader>
-            
-            <div className="mt-4">
-              {activeStep !== null && steps[activeStep]?.demo.content}
+              </div>
             </div>
             
-            <div className="mt-6 flex justify-between items-center">
-              <button
-                onClick={() => setActiveStep(prev => (prev !== null && prev > 0) ? prev - 1 : null)}
-                disabled={activeStep === 0}
-                className="px-4 py-2 border border-gray-300 rounded-md flex items-center disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 transition-colors"
-              >
-                <ArrowRight className="h-4 w-4 transform rotate-180 mr-2" /> Previous Step
-              </button>
-              
-              {activeStep !== null && activeStep < steps.length - 1 ? (
-                <button
-                  onClick={() => setActiveStep(prev => (prev !== null && prev < steps.length - 1) ? prev + 1 : null)}
-                  className="px-4 py-2 bg-mutedTeal text-white rounded-md flex items-center hover:bg-mutedTeal/90 transition-colors"
-                >
-                  Next Step <ArrowRight className="h-4 w-4 ml-2" />
-                </button>
-              ) : (
-                <Link 
-                  to="/demo" 
-                  className="px-4 py-2 bg-mutedTeal text-white rounded-md flex items-center hover:bg-mutedTeal/90 transition-colors"
-                >
-                  Try It Now <ArrowRight className="h-4 w-4 ml-2" />
-                </Link>
-              )}
+            {/* Vertical steps on the right */}
+            <div className="md:w-1/3">
+              <div className="sticky top-32">
+                <div className="relative">
+                  {/* Connecting line */}
+                  <div className="absolute top-0 bottom-0 left-7 w-1 bg-gradient-to-b from-mutedTeal/20 via-mutedTeal to-mutedTeal/20 z-0"></div>
+                  
+                  {/* Steps */}
+                  <div className="space-y-12 relative z-10">
+                    {steps.map((step, index) => (
+                      <PageTransition key={index} delay={index * 200 + 100} direction="right">
+                        <div 
+                          className={`flex items-start transition-all duration-500 ${
+                            visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+                          } ${activeStep === index ? 'scale-110 -translate-x-2' : ''} ${hoveredStep === index ? 'transform -translate-x-1' : ''}`}
+                          onMouseEnter={() => setHoveredStep(index)}
+                          onMouseLeave={() => setHoveredStep(null)}
+                          onClick={() => setActiveStep(index)}
+                        >
+                          <div 
+                            className={`relative flex-shrink-0 bg-white rounded-full p-4 shadow-md mb-6 border border-softGray mr-4 transition-all duration-300 cursor-pointer group 
+                            ${activeStep === index ? 'bg-mutedTeal border-mutedTeal' : ''}
+                            ${hoveredStep === index ? 'shadow-lg bg-mutedTeal/5 border-mutedTeal/30 animate-border-glow' : ''}`}
+                          >
+                            <div className={`transition-transform duration-300 ${
+                              hoveredStep === index || activeStep === index ? 'text-mutedTeal animate-bounce-subtle' : ''
+                            } ${activeStep === index ? 'text-white' : ''}`}>
+                              {step.icon}
+                            </div>
+                            <span className={`absolute top-0 -right-1 inline-block bg-mutedTeal text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 ${
+                              hoveredStep === index || activeStep === index ? 'animate-highlight-pulse' : ''
+                            }`}>
+                              {index + 1}
+                            </span>
+                          </div>
+                          
+                          <div className={`flex flex-col pt-3 ${activeStep === index ? 'transform scale-105' : ''}`}>
+                            <h3 className={`text-lg font-bold mb-1 transition-all duration-300 ${
+                              activeStep === index ? 'text-mutedTeal' : 'text-navyTrust'
+                            } ${hoveredStep === index ? 'text-mutedTeal' : ''}`}>
+                              {step.title}
+                            </h3>
+                            <p className={`text-sm transition-all duration-300 ${
+                              hoveredStep === index || activeStep === index ? 'text-deepCharcoal' : 'text-deepCharcoal/70'
+                            }`}>
+                              {step.description}
+                            </p>
+                          </div>
+                        </div>
+                      </PageTransition>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* CTA button at the bottom */}
+                <PageTransition delay={800} direction="right">
+                  <div className="mt-8 text-center">
+                    <Link 
+                      to="/demo" 
+                      className="inline-flex items-center bg-mutedTeal text-white px-4 py-2 rounded-lg shadow-sm hover:bg-mutedTeal/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg group ripple-button overflow-hidden relative"
+                    >
+                      <span className="relative z-10">Start Your Journey</span>
+                      <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1 relative z-10" />
+                      <span className="absolute inset-0 bg-gradient-to-r from-navyTrust to-mutedTeal opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+                    </Link>
+                  </div>
+                </PageTransition>
+              </div>
             </div>
-          </DialogContent>
-        </Dialog>
-        
-        <div className={`text-center mt-16 transition-all duration-1000 ${
-          visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`} style={{ transitionDelay: '800ms' }}>
-          <Link 
-            to="/demo" 
-            className="inline-flex items-center bg-mutedTeal text-white px-6 py-3 rounded-lg shadow-sm hover:bg-mutedTeal/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg group ripple-button overflow-hidden relative"
-          >
-            <span className="relative z-10">Start Your Compliance Journey</span>
-            <ArrowRight className="ml-2 h-6 w-6 transition-transform duration-300 group-hover:translate-x-1 relative z-10" />
-            <span className="absolute inset-0 bg-gradient-to-r from-navyTrust to-mutedTeal opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
-          </Link>
+          </div>
         </div>
       </div>
+      
+      {/* We're removing the separate Dialog component since we've incorporated the demo directly in the main content area */}
     </section>
   );
 };
