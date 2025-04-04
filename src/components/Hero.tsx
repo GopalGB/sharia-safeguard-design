@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Shield, FileText, Check, FileCheck, Scale, Gavel, Award, CheckCircle, Lock } from 'lucide-react';
@@ -301,18 +300,18 @@ const Hero = () => {
                       </div>
                       
                       <div className="absolute -bottom-4 -right-4 w-16 h-16 filter drop-shadow-lg">
-                        <div className="absolute inset-0 bg-navyTrust rounded-full opacity-10 animate-pulse"></div>
+                        <div className="absolute inset-0 bg-navyTrust rounded-full opacity-10"></div>
                         <div className="absolute inset-1 bg-white rounded-full flex items-center justify-center border-2 border-navyTrust shadow-md hover:scale-105 transition-transform duration-300 group cursor-pointer">
-                          <Award className="absolute h-5 w-5 text-navyTrust/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform rotate-[-30deg] group-hover:rotate-0 transition-transform duration-300" />
-                          <div className="text-navyTrust text-xs font-serif animate-rotate-slow group-hover:opacity-0 transition-opacity duration-300">CERTIFIED</div>
+                          <Award className="h-6 w-6 text-navyTrust" />
+                          <div className="absolute opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-navyTrust text-xs font-medium">CERTIFIED</div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="absolute -bottom-5 -right-5 h-24 w-24 rounded-full bg-gradient-to-br from-sandGold/40 to-sandGold/20 backdrop-blur-md border border-white/20 animate-rotate-slow"></div>
-              <div className="absolute -top-8 -left-8 h-16 w-16 rounded-full bg-gradient-to-br from-mutedTeal/40 to-mutedTeal/20 backdrop-blur-md border border-white/20 animate-rotate-slow" style={{ animationDirection: 'reverse' }}></div>
+              <div className="absolute -bottom-5 -right-5 h-24 w-24 rounded-full bg-gradient-to-br from-sandGold/40 to-sandGold/20 backdrop-blur-md border border-white/20"></div>
+              <div className="absolute -top-8 -left-8 h-16 w-16 rounded-full bg-gradient-to-br from-mutedTeal/40 to-mutedTeal/20 backdrop-blur-md border border-white/20"></div>
               <div className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-gradient-to-br from-uaeRed/30 to-uaeRed/10 backdrop-blur-md border border-white/20 animate-pulse-soft"></div>
             </div>
           </div>
