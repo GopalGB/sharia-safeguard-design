@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Shield, FileText, Check, FileCheck, Scale, Gavel, Award, CheckCircle, Lock } from 'lucide-react';
@@ -7,23 +8,22 @@ const Hero = () => {
   const animationRef = useRef<HTMLDivElement>(null);
   const [activeFeature, setActiveFeature] = useState(0);
   const [animateElements, setAnimateElements] = useState(false);
-  const [documentAnimState, setDocumentAnimState] = useState(0);
   
   const features = [
     { 
-      icon: <FileCheck className="h-6 w-6 text-mutedTeal opacity-90 feature-icon-animation" />, 
+      icon: <FileCheck className="h-6 w-6 text-mutedTeal opacity-90" />, 
       text: "Sharia compliant" 
     },
     { 
-      icon: <Shield className="h-6 w-6 text-navyTrust opacity-90 feature-icon-animation" />, 
+      icon: <Shield className="h-6 w-6 text-navyTrust opacity-90" />, 
       text: "Verified contract" 
     },
     { 
-      icon: <Scale className="h-6 w-6 text-uaeRed opacity-90 feature-icon-animation" />, 
+      icon: <Scale className="h-6 w-6 text-uaeRed opacity-90" />, 
       text: "Legal approved" 
     },
     { 
-      icon: <Gavel className="h-6 w-6 text-mutedCoral opacity-90 feature-icon-animation" />, 
+      icon: <Gavel className="h-6 w-6 text-mutedCoral opacity-90" />, 
       text: "Court validated" 
     }
   ];
@@ -37,13 +37,8 @@ const Hero = () => {
       setActiveFeature((prev) => (prev + 1) % features.length);
     }, 3000);
     
-    const docAnimInterval = setInterval(() => {
-      setDocumentAnimState(prev => (prev + 1) % 4);
-    }, 2500);
-    
     return () => {
       clearInterval(interval);
-      clearInterval(docAnimInterval);
     };
   }, []);
 
@@ -220,90 +215,56 @@ const Hero = () => {
             style={{ transitionDelay: '500ms' }}
           >
             <div className="relative">
-              <div ref={animationRef} className="aspect-square md:aspect-auto md:h-[500px] rounded-2xl bg-gradient-to-br from-navyTrust/10 to-mutedTeal/10 backdrop-blur-sm border border-white/30 shadow-xl flex items-center justify-center overflow-hidden animate-pulse-slow">
+              <div ref={animationRef} className="aspect-square md:aspect-auto md:h-[500px] rounded-2xl bg-gradient-to-br from-navyTrust/10 to-mutedTeal/10 backdrop-blur-sm border border-white/30 shadow-xl flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="transform -rotate-6 opacity-90 floating-animation">
-                    <div className="relative z-10 bg-white rounded-lg document-card-shadow p-5 max-w-xs feature-container">
+                  <div className="transform -rotate-6">
+                    <div className="relative z-10 bg-white rounded-lg shadow-lg p-5 max-w-xs">
                       <div className="flex items-center mb-4 pb-2 border-b border-softGray">
-                        <div className="bg-gradient-to-r from-navyTrust to-mutedTeal rounded-md p-1.5 mr-3 verification-badge group animate-border-glow hover:scale-105 transition-transform duration-300">
-                          <Scale className="h-5 w-5 text-white group-hover:rotate-12 transition-transform duration-300" />
+                        <div className="bg-gradient-to-r from-navyTrust to-mutedTeal rounded-md p-1.5 mr-3">
+                          <Scale className="h-5 w-5 text-white" />
                         </div>
                         <span className="font-semibold text-navyTrust text-lg tracking-tight">Legal Verification</span>
-                        <Lock className="h-4 w-4 text-mutedTeal ml-2 animate-pulse-soft" />
+                        <Lock className="h-4 w-4 text-mutedTeal ml-2" />
                       </div>
                       
-                      <div className="relative h-28 mb-4 perspective-effect">
-                        <div className="absolute inset-0 bg-softGray/70 rounded-md flex items-center justify-center transform transition-all duration-500 hover:translate-y-[-1px]">
-                          <FileText className="h-10 w-10 text-deepCharcoal/40" />
-                        </div>
-                        
-                        <div 
-                          className={`absolute inset-0 bg-gradient-to-r from-navyTrust/10 to-navyTrust/5 rounded-md flex items-center justify-center transform transition-all duration-700 shadow-md ${
-                            documentAnimState >= 1 ? 'translate-y-[-6px] translate-x-[-6px]' : ''
-                          }`}
-                        >
-                          <FileCheck className={`h-10 w-10 ${documentAnimState >= 1 ? 'text-navyTrust' : 'text-deepCharcoal/40'} transition-colors duration-700`} />
-                        </div>
-                        
-                        <div 
-                          className={`absolute inset-0 bg-gradient-to-r from-mutedTeal/10 to-mutedTeal/5 rounded-md flex items-center justify-center transform transition-all duration-700 shadow-md ${
-                            documentAnimState >= 2 ? 'translate-y-[-12px] translate-x-[-12px]' : ''
-                          }`}
-                        >
-                          <Scale className={`h-10 w-10 ${documentAnimState >= 2 ? 'text-mutedTeal' : 'text-deepCharcoal/40'} transition-colors duration-700`} />
-                        </div>
-                        
-                        <div 
-                          className={`absolute inset-0 bg-gradient-to-r from-sandGold/10 to-sandGold/5 rounded-md flex items-center justify-center transform transition-all duration-700 shadow-md ${
-                            documentAnimState >= 3 ? 'translate-y-[-18px] translate-x-[-18px]' : ''
-                          }`}
-                        >
-                          <Gavel className={`h-10 w-10 ${documentAnimState >= 3 ? 'text-sandGold' : 'text-deepCharcoal/40'} transition-colors duration-700`} />
+                      <div className="relative h-28 mb-4">
+                        <div className="absolute inset-0 bg-softGray/70 rounded-md flex items-center justify-center">
+                          <FileText className="h-10 w-10 text-navyTrust" />
                         </div>
                       </div>
                       
                       <div className="space-y-2.5 px-1">
                         <div className="flex items-center">
                           <CheckCircle className="h-3.5 w-3.5 text-mutedTeal mr-2 flex-shrink-0" />
-                          <div className="h-3 bg-gradient-to-r from-mutedTeal/30 to-mutedTeal/10 rounded-full w-full animate-pulse-soft"></div>
+                          <div className="h-3 bg-gradient-to-r from-mutedTeal/30 to-mutedTeal/10 rounded-full w-full"></div>
                         </div>
                         <div className="flex items-center">
                           <CheckCircle className="h-3.5 w-3.5 text-navyTrust mr-2 flex-shrink-0" />
-                          <div className="h-3 bg-gradient-to-r from-navyTrust/30 to-navyTrust/10 rounded-full w-3/4 animate-pulse-soft" style={{ animationDelay: '0.2s' }}></div>
+                          <div className="h-3 bg-gradient-to-r from-navyTrust/30 to-navyTrust/10 rounded-full w-3/4"></div>
                         </div>
                         <div className="flex items-center">
                           <CheckCircle className="h-3.5 w-3.5 text-uaeRed mr-2 flex-shrink-0" />
-                          <div className="h-3 bg-gradient-to-r from-uaeRed/20 to-uaeRed/5 rounded-full w-5/6 animate-pulse-soft" style={{ animationDelay: '0.4s' }}></div>
+                          <div className="h-3 bg-gradient-to-r from-uaeRed/20 to-uaeRed/5 rounded-full w-5/6"></div>
                         </div>
                       </div>
                       <div className="mt-5 flex space-x-2">
-                        <div className="h-8 w-8 rounded-full bg-gradient-to-br from-green-100 to-green-50 flex items-center justify-center relative document-approval-animation shadow-sm overflow-hidden">
+                        <div className="h-8 w-8 rounded-full bg-gradient-to-br from-green-100 to-green-50 flex items-center justify-center relative shadow-sm overflow-hidden">
                           <Check className="h-4 w-4 text-green-600 z-10" />
-                          <div className="absolute inset-0 rounded-full bg-green-400/30 animate-ping opacity-75" style={{ animationDuration: '1.5s' }}></div>
-                          <div className="absolute inset-0 bg-radial-gradient opacity-20"></div>
                         </div>
-                        <div className="flex-1 h-8 bg-gradient-to-r from-navyTrust/10 to-mutedTeal/5 rounded-md flex items-center px-3 overflow-hidden shadow-sm relative group">
-                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-                          <div className="flex transition-transform duration-700 ease-in-out w-full" style={{ transform: `translateX(-${activeFeature * 100}%)` }}>
-                            {features.map((feature, index) => (
-                              <span 
-                                key={index} 
-                                className="text-xs text-navyTrust font-medium whitespace-nowrap flex-shrink-0 w-full flex items-center"
-                                style={{ animation: activeFeature === index ? 'feature-slide-in 0.5s forwards' : 'none' }}
-                              >
-                                {React.cloneElement(feature.icon, { className: "h-3.5 w-3.5 mr-1.5" })}
-                                {feature.text}
-                              </span>
-                            ))}
+                        <div className="flex-1 h-8 bg-gradient-to-r from-navyTrust/10 to-mutedTeal/5 rounded-md flex items-center px-3 overflow-hidden shadow-sm relative">
+                          <div className="flex w-full">
+                            <span className="text-xs text-navyTrust font-medium whitespace-nowrap flex-shrink-0 w-full flex items-center">
+                              {React.cloneElement(features[activeFeature].icon, { className: "h-3.5 w-3.5 mr-1.5" })}
+                              {features[activeFeature].text}
+                            </span>
                           </div>
                         </div>
                       </div>
                       
                       <div className="absolute -bottom-4 -right-4 w-16 h-16 filter drop-shadow-lg">
                         <div className="absolute inset-0 bg-navyTrust rounded-full opacity-10"></div>
-                        <div className="absolute inset-1 bg-white rounded-full flex items-center justify-center border-2 border-navyTrust shadow-md hover:scale-105 transition-transform duration-300 group cursor-pointer">
+                        <div className="absolute inset-1 bg-white rounded-full flex items-center justify-center border-2 border-navyTrust shadow-md">
                           <Award className="h-6 w-6 text-navyTrust" />
-                          <div className="absolute opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-navyTrust text-xs font-medium">CERTIFIED</div>
                         </div>
                       </div>
                     </div>
@@ -312,7 +273,7 @@ const Hero = () => {
               </div>
               <div className="absolute -bottom-5 -right-5 h-24 w-24 rounded-full bg-gradient-to-br from-sandGold/40 to-sandGold/20 backdrop-blur-md border border-white/20"></div>
               <div className="absolute -top-8 -left-8 h-16 w-16 rounded-full bg-gradient-to-br from-mutedTeal/40 to-mutedTeal/20 backdrop-blur-md border border-white/20"></div>
-              <div className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-gradient-to-br from-uaeRed/30 to-uaeRed/10 backdrop-blur-md border border-white/20 animate-pulse-soft"></div>
+              <div className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-gradient-to-br from-uaeRed/30 to-uaeRed/10 backdrop-blur-md border border-white/20"></div>
             </div>
           </div>
         </div>
