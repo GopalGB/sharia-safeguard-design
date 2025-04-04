@@ -5,23 +5,37 @@ import { Link } from 'react-router-dom';
 import { toast } from "sonner";
 import PageTransition from '@/components/PageTransition';
 
-const Login = () => {
+const SignUp = () => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [remember, setRemember] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [agreeTerms, setAgreeTerms] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email || !password) {
-      toast.error("Please enter both email and password");
+    
+    if (!name || !email || !password || !confirmPassword) {
+      toast.error("Please fill in all required fields");
       return;
     }
-    toast.success("Logging in...");
-    // Authentication would happen here
+    
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match");
+      return;
+    }
+    
+    if (!agreeTerms) {
+      toast.error("You must agree to the Terms of Service");
+      return;
+    }
+    
+    toast.success("Account created successfully!");
+    // Account creation logic would happen here
   };
 
   return (
-    <PageTransition>
+    <PageTransition direction="right">
       <div className="min-h-screen bg-gradient-to-b from-lightSand to-white flex flex-col">
         <div className="absolute top-4 left-4 md:top-8 md:left-8">
           <Link to="/" className="inline-flex items-center text-deepCharcoal/60 text-sm hover:text-mutedTeal transition-colors">
@@ -41,10 +55,24 @@ const Login = () => {
                     className="h-16 mx-auto" 
                   />
                 </Link>
-                <p className="text-deepCharcoal/60 mt-2">Sign in to your account</p>
+                <p className="text-deepCharcoal/60 mt-2">Create your account</p>
               </div>
               
               <form className="space-y-6" onSubmit={handleSubmit}>
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-deepCharcoal mb-1">
+                    Full Name
+                  </label>
+                  <input
+                    id="name"
+                    type="text"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-mutedTeal focus:border-mutedTeal transition-all"
+                    placeholder="Enter your full name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
+              
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-deepCharcoal mb-1">
                     Email Address
@@ -61,34 +89,43 @@ const Login = () => {
                 </div>
                 
                 <div>
-                  <div className="flex items-center justify-between mb-1">
-                    <label htmlFor="password" className="block text-sm font-medium text-deepCharcoal">
-                      Password
-                    </label>
-                    <Link to="/forgot-password" className="text-sm text-mutedTeal hover:text-mutedTeal/80">
-                      Forgot password?
-                    </Link>
-                  </div>
+                  <label htmlFor="password" className="block text-sm font-medium text-deepCharcoal mb-1">
+                    Password
+                  </label>
                   <input
                     id="password"
                     type="password"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-mutedTeal focus:border-mutedTeal transition-all"
-                    placeholder="Enter your password"
+                    placeholder="Create a password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
                 
+                <div>
+                  <label htmlFor="confirmPassword" className="block text-sm font-medium text-deepCharcoal mb-1">
+                    Confirm Password
+                  </label>
+                  <input
+                    id="confirmPassword"
+                    type="password"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-mutedTeal focus:border-mutedTeal transition-all"
+                    placeholder="Confirm your password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                  />
+                </div>
+                
                 <div className="flex items-center">
                   <input
-                    id="remember"
+                    id="agree"
                     type="checkbox"
                     className="h-4 w-4 text-mutedTeal border-gray-300 rounded focus:ring-mutedTeal"
-                    checked={remember}
-                    onChange={(e) => setRemember(e.target.checked)}
+                    checked={agreeTerms}
+                    onChange={(e) => setAgreeTerms(e.target.checked)}
                   />
-                  <label htmlFor="remember" className="ml-2 block text-sm text-deepCharcoal">
-                    Remember me
+                  <label htmlFor="agree" className="ml-2 block text-sm text-deepCharcoal">
+                    I agree to the <a href="#" className="text-mutedTeal hover:underline">Terms of Service</a> and <a href="#" className="text-mutedTeal hover:underline">Privacy Policy</a>
                   </label>
                 </div>
                 
@@ -96,28 +133,28 @@ const Login = () => {
                   type="submit"
                   className="w-full bg-gradient-to-r from-navyTrust to-mutedTeal text-white py-3 rounded-lg font-medium hover:opacity-95 transition-all duration-300 shadow-sm"
                 >
-                  Sign In
+                  Create Account
                 </button>
               </form>
               
               <div className="mt-8 text-center">
                 <p className="text-deepCharcoal/60 text-sm">
-                  Don't have an account?{' '}
-                  <Link to="/signup" className="text-mutedTeal hover:text-mutedTeal/80 font-medium">
-                    Create account
+                  Already have an account?{' '}
+                  <Link to="/login" className="text-mutedTeal hover:text-mutedTeal/80 font-medium">
+                    Sign in
                   </Link>
                 </p>
               </div>
               
               <div className="mt-8 pt-6 border-t border-gray-200">
                 <div className="flex justify-center space-x-4">
-                  <Link to="/terms-of-service" className="text-deepCharcoal/70 hover:text-mutedTeal transition-colors">
+                  <a href="#" className="text-deepCharcoal/70 hover:text-mutedTeal transition-colors">
                     Terms of Service
-                  </Link>
+                  </a>
                   <span className="text-deepCharcoal/40">•</span>
-                  <Link to="/privacy-policy" className="text-deepCharcoal/70 hover:text-mutedTeal transition-colors">
+                  <a href="#" className="text-deepCharcoal/70 hover:text-mutedTeal transition-colors">
                     Privacy Policy
-                  </Link>
+                  </a>
                 </div>
                 <div className="mt-4 text-center text-xs text-deepCharcoal/50">
                   © {new Date().getFullYear()} ShariaGuard. All rights reserved.
@@ -134,4 +171,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
