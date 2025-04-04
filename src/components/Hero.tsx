@@ -7,6 +7,7 @@ const Hero = () => {
   const animationRef = useRef<HTMLDivElement>(null);
   const [activeFeature, setActiveFeature] = useState(0);
   const [animateElements, setAnimateElements] = useState(false);
+  const [documentAnimState, setDocumentAnimState] = useState(0);
   
   const features = [
     { 
@@ -36,7 +37,14 @@ const Hero = () => {
       setActiveFeature((prev) => (prev + 1) % features.length);
     }, 3000);
     
-    return () => clearInterval(interval);
+    const docAnimInterval = setInterval(() => {
+      setDocumentAnimState(prev => (prev + 1) % 4);
+    }, 2500);
+    
+    return () => {
+      clearInterval(interval);
+      clearInterval(docAnimInterval);
+    };
   }, []);
 
   useEffect(() => {
@@ -217,24 +225,42 @@ const Hero = () => {
                   <div className="transform -rotate-6 opacity-90 floating-animation">
                     <div className="relative z-10 bg-white rounded-lg document-card-shadow p-5 max-w-xs feature-container">
                       <div className="flex items-center mb-4 pb-2 border-b border-softGray">
-                        <div className="bg-gradient-to-r from-sandGold to-mutedTeal rounded-md p-1.5 mr-3 verification-badge">
-                          <Shield className="h-5 w-5 text-white" />
+                        <div className="bg-gradient-to-r from-navyTrust to-mutedTeal rounded-md p-1.5 mr-3 verification-badge">
+                          <Scale className="h-5 w-5 text-white" />
                         </div>
-                        <span className="font-semibold text-navyTrust text-lg">Instant Verification</span>
+                        <span className="font-semibold text-navyTrust text-lg">Legal Verification</span>
                       </div>
-                      <div className="h-20 bg-gradient-to-r from-navyTrust/5 to-mutedTeal/5 rounded-md mb-4 flex items-center justify-center overflow-hidden">
-                        <div className="flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${activeFeature * 100}%)` }}>
-                          {features.map((feature, index) => (
-                            <div 
-                              key={index} 
-                              className="h-20 w-full flex-shrink-0 flex items-center justify-center"
-                              style={{ animation: activeFeature === index ? 'feature-slide-in 0.5s forwards' : 'none' }}
-                            >
-                              {feature.icon}
-                            </div>
-                          ))}
+                      
+                      <div className="relative h-24 mb-4">
+                        <div className="absolute inset-0 bg-softGray rounded-md flex items-center justify-center">
+                          <FileText className="h-10 w-10 text-deepCharcoal/40" />
+                        </div>
+                        
+                        <div 
+                          className={`absolute inset-0 bg-gradient-to-r from-navyTrust/10 to-navyTrust/5 rounded-md flex items-center justify-center transform transition-all duration-700 ${
+                            documentAnimState >= 1 ? 'translate-y-[-4px] translate-x-[-4px]' : ''
+                          }`}
+                        >
+                          <FileCheck className={`h-10 w-10 ${documentAnimState >= 1 ? 'text-navyTrust' : 'text-deepCharcoal/40'} transition-colors duration-700`} />
+                        </div>
+                        
+                        <div 
+                          className={`absolute inset-0 bg-gradient-to-r from-mutedTeal/10 to-mutedTeal/5 rounded-md flex items-center justify-center transform transition-all duration-700 ${
+                            documentAnimState >= 2 ? 'translate-y-[-8px] translate-x-[-8px]' : ''
+                          }`}
+                        >
+                          <Scale className={`h-10 w-10 ${documentAnimState >= 2 ? 'text-mutedTeal' : 'text-deepCharcoal/40'} transition-colors duration-700`} />
+                        </div>
+                        
+                        <div 
+                          className={`absolute inset-0 bg-gradient-to-r from-sandGold/10 to-sandGold/5 rounded-md flex items-center justify-center transform transition-all duration-700 ${
+                            documentAnimState >= 3 ? 'translate-y-[-12px] translate-x-[-12px]' : ''
+                          }`}
+                        >
+                          <Gavel className={`h-10 w-10 ${documentAnimState >= 3 ? 'text-sandGold' : 'text-deepCharcoal/40'} transition-colors duration-700`} />
                         </div>
                       </div>
+                      
                       <div className="space-y-2 px-1">
                         <div className="h-3 bg-gradient-to-r from-mutedTeal/30 to-mutedTeal/10 rounded-full w-full animate-pulse-soft"></div>
                         <div className="h-3 bg-gradient-to-r from-navyTrust/30 to-navyTrust/10 rounded-full w-3/4 animate-pulse-soft" style={{ animationDelay: '0.2s' }}></div>
@@ -257,6 +283,13 @@ const Hero = () => {
                               </span>
                             ))}
                           </div>
+                        </div>
+                      </div>
+                      
+                      <div className="absolute -bottom-4 -right-4 w-16 h-16">
+                        <div className="absolute inset-0 bg-navyTrust rounded-full opacity-10 animate-pulse"></div>
+                        <div className="absolute inset-1 bg-white rounded-full flex items-center justify-center border-2 border-navyTrust shadow-md">
+                          <div className="text-navyTrust text-xs font-serif animate-rotate-slow">CERTIFIED</div>
                         </div>
                       </div>
                     </div>
