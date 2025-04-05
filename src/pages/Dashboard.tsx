@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   ChevronRight, 
@@ -8,13 +8,19 @@ import {
   Users, 
   Settings,
   Bell,
-  Search
+  Search,
+  Plus,
+  Upload,
+  FileSpreadsheet
 } from 'lucide-react';
 import PageTransition from '@/components/PageTransition';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import DocumentUploadModal from '@/components/DocumentUploadModal';
 
 const Dashboard = () => {
+  const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
+  
   // Mock data for dashboard
   const recentDocuments = [
     { id: 1, name: 'Contract Agreement #1207', status: 'Approved', date: '2025-03-31' },
@@ -65,14 +71,35 @@ const Dashboard = () => {
 
         {/* Dashboard Content */}
         <main className="container mx-auto px-4 py-8">
-          <div className="mb-8">
-            <h1 className="text-2xl font-bold text-navyTrust mb-1">Welcome back, Ahmed</h1>
-            <p className="text-deepCharcoal/70">Here's an overview of your compliance status</p>
+          <div className="flex flex-wrap items-center justify-between mb-8">
+            <div>
+              <h1 className="text-2xl font-bold text-navyTrust mb-1">Welcome back, Ahmed</h1>
+              <p className="text-deepCharcoal/70">Here's an overview of your compliance status</p>
+            </div>
+            
+            {/* Quick Actions - Moved to top */}
+            <div className="flex flex-wrap gap-3 mt-4 md:mt-0">
+              <Button 
+                className="bg-gradient-to-r from-navyTrust to-mutedTeal text-white flex items-center gap-2"
+                onClick={() => setIsUploadModalOpen(true)}
+              >
+                <Upload className="h-4 w-4" />
+                Upload Document
+              </Button>
+              <Button variant="outline" className="border-mutedTeal text-mutedTeal flex items-center gap-2">
+                <Plus className="h-4 w-4" />
+                New Client
+              </Button>
+              <Button variant="outline" className="border-mutedTeal text-mutedTeal flex items-center gap-2">
+                <FileSpreadsheet className="h-4 w-4" />
+                Generate Report
+              </Button>
+            </div>
           </div>
 
           {/* Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-deepCharcoal/70 font-medium">Documents</h3>
                 <div className="p-2 bg-lightSand rounded-lg">
@@ -85,7 +112,7 @@ const Dashboard = () => {
               </p>
             </div>
             
-            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-deepCharcoal/70 font-medium">Compliance Score</h3>
                 <div className="p-2 bg-lightSand rounded-lg">
@@ -98,7 +125,7 @@ const Dashboard = () => {
               </p>
             </div>
             
-            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-deepCharcoal/70 font-medium">Team Members</h3>
                 <div className="p-2 bg-lightSand rounded-lg">
@@ -111,11 +138,11 @@ const Dashboard = () => {
           </div>
 
           {/* Recent Documents */}
-          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 mb-8">
+          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow mb-8">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-lg font-semibold text-navyTrust">Recent Documents</h2>
-              <Link to="/documents" className="text-mutedTeal text-sm font-medium hover:underline">
-                View all
+              <Link to="/documents" className="text-mutedTeal text-sm font-medium hover:underline flex items-center">
+                View all <ChevronRight className="h-4 w-4 ml-1" />
               </Link>
             </div>
             
@@ -131,10 +158,10 @@ const Dashboard = () => {
                 </thead>
                 <tbody>
                   {recentDocuments.map((doc) => (
-                    <tr key={doc.id} className="hover:bg-gray-50">
-                      <td className="py-4 px-4 text-sm text-navyTrust">{doc.name}</td>
+                    <tr key={doc.id} className="hover:bg-gray-50 border-b border-gray-100">
+                      <td className="py-4 px-4 text-sm font-medium text-navyTrust">{doc.name}</td>
                       <td className="py-4 px-4">
-                        <span className={`inline-block px-2 py-1 text-xs rounded-full ${
+                        <span className={`inline-block px-2 py-1 text-xs font-medium rounded-full ${
                           doc.status === 'Approved' 
                             ? 'bg-green-100 text-green-800' 
                             : doc.status === 'Pending' 
@@ -146,7 +173,7 @@ const Dashboard = () => {
                       </td>
                       <td className="py-4 px-4 text-sm text-deepCharcoal/70">{doc.date}</td>
                       <td className="py-4 px-4 text-right">
-                        <Button variant="ghost" size="icon">
+                        <Button variant="ghost" size="icon" className="hover:bg-gray-100">
                           <ChevronRight className="h-4 w-4 text-deepCharcoal/60" />
                         </Button>
                       </td>
@@ -156,24 +183,13 @@ const Dashboard = () => {
               </table>
             </div>
           </div>
-
-          {/* Quick Actions */}
-          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-            <h2 className="text-lg font-semibold text-navyTrust mb-6">Quick Actions</h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <Button className="bg-gradient-to-r from-navyTrust to-mutedTeal text-white">
-                Upload New Document
-              </Button>
-              <Button variant="outline" className="border-mutedTeal text-mutedTeal">
-                Request Verification
-              </Button>
-              <Button variant="outline" className="border-mutedTeal text-mutedTeal">
-                Generate Report
-              </Button>
-            </div>
-          </div>
         </main>
+        
+        {/* Document Upload Modal */}
+        <DocumentUploadModal 
+          isOpen={isUploadModalOpen} 
+          onClose={() => setIsUploadModalOpen(false)} 
+        />
       </div>
     </PageTransition>
   );
