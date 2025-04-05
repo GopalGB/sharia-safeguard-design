@@ -19,6 +19,10 @@ import CaseStudies from "./pages/CaseStudies";
 import ComplianceGuides from "./pages/ComplianceGuides";
 import Documentation from "./pages/Documentation";
 import API from "./pages/API";
+import Dashboard from "./pages/Dashboard";
+import Documents from "./pages/Documents";
+import Clients from "./pages/Clients";
+import Reports from "./pages/Reports";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +47,13 @@ const App = () => (
           <Route path="/compliance-guides" element={<ComplianceGuides />} />
           <Route path="/documentation" element={<Documentation />} />
           <Route path="/api" element={<API />} />
+          
+          {/* Backend UI Routes */}
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/documents" element={<Documents />} />
+          <Route path="/clients" element={<Clients />} />
+          <Route path="/reports" element={<Reports />} />
+          
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
