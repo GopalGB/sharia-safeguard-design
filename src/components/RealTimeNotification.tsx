@@ -16,19 +16,23 @@ const RealTimeNotification: React.FC<NotificationProps> = ({
   onClose
 }) => {
   const [isVisible, setIsVisible] = useState(true);
+  const [isExiting, setIsExiting] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsVisible(false);
-      if (onClose) onClose();
+      handleClose();
     }, duration);
 
     return () => clearTimeout(timer);
   }, [duration, onClose]);
 
   const handleClose = () => {
-    setIsVisible(false);
-    if (onClose) onClose();
+    setIsExiting(true);
+    // Add delay for exit animation to complete
+    setTimeout(() => {
+      setIsVisible(false);
+      if (onClose) onClose();
+    }, 300);
   };
 
   if (!isVisible) return null;
@@ -41,7 +45,12 @@ const RealTimeNotification: React.FC<NotificationProps> = ({
   };
 
   return (
-    <div className={`fixed top-4 right-4 z-50 max-w-sm w-full shadow-lg rounded-lg border-l-4 ${typeStyles[type]} animate-slide-in-right`}>
+    <div 
+      className={`fixed top-4 right-4 z-50 max-w-sm w-full shadow-lg rounded-lg border-l-4 ${typeStyles[type]} 
+        transition-all duration-300 ease-in-out
+        ${isExiting ? 'opacity-0 translate-x-4' : 'opacity-100 translate-x-0'}
+      `}
+    >
       <div className="p-4 flex items-start">
         <div className="flex-grow">
           <p className="text-sm">{message}</p>

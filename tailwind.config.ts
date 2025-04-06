@@ -205,6 +205,32 @@ export default {
 					'100%': {
 						width: '100%'
 					}
+				},
+				'card-hover': {
+					'0%': {
+						transform: 'translateY(0)'
+					},
+					'100%': {
+						transform: 'translateY(-10px)'
+					}
+				},
+				'pricing-pulse': {
+					'0%, 100%': {
+						boxShadow: '0 0 0 0 rgba(42, 157, 143, 0)'
+					},
+					'50%': {
+						boxShadow: '0 0 20px 5px rgba(42, 157, 143, 0.3)'
+					}
+				},
+				'slide-in-right': {
+					'0%': {
+						transform: 'translateX(100%)',
+						opacity: '0'
+					},
+					'100%': {
+						transform: 'translateX(0)',
+						opacity: '1'
+					}
 				}
 			},
 			animation: {
@@ -222,6 +248,9 @@ export default {
 				'float': 'float 4s infinite ease-in-out',
 				'highlight-pulse': 'highlight-pulse 2s infinite ease-in-out',
 				'typing': 'typing 2s steps(20, end) forwards',
+				'card-hover': 'card-hover 0.3s ease-out forwards',
+				'pricing-pulse': 'pricing-pulse 2s infinite ease-in-out',
+				'slide-in-right': 'slide-in-right 0.5s ease-out',
 			},
 			backgroundImage: {
 				'geometric-pattern': "url('/geometric-pattern.svg')",
