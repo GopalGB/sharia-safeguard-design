@@ -82,7 +82,7 @@ const Index = () => {
     <PageTransition>
       <div className="min-h-screen flex flex-col">
         <Navbar />
-        <main className="flex-grow pt-24"> {/* Added padding-top to account for fixed navbar */}
+        <main className="flex-grow pt-24 md:pt-28"> {/* Increased padding to account for fixed navbar */}
           <Hero />
           <Features />
           <HowItWorks />

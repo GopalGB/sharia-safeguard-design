@@ -49,7 +49,9 @@ const Navbar = () => {
   return (
     <nav className={cn(
       "fixed top-0 left-0 w-full z-50 transition-all duration-500", 
-      scrolled ? "bg-white bg-opacity-95 backdrop-filter backdrop-blur-md shadow-md py-3" : "bg-transparent py-5"
+      scrolled 
+        ? "bg-white bg-opacity-95 backdrop-filter backdrop-blur-md shadow-md py-2 translate-y-0 animate-fade-in" 
+        : "bg-transparent py-4 translate-y-0"
     )}>
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center">
@@ -57,54 +59,54 @@ const Navbar = () => {
             <img 
               src="/lovable-uploads/389d5a05-7129-42d5-bec5-e81650db6590.png" 
               alt="ShariaGuard Logo" 
-              className="h-14 md:h-16 transition-all duration-300 object-fill group-hover:scale-105" 
+              className="h-12 md:h-14 transition-all duration-300 object-fill group-hover:scale-105" 
             />
           </Link>
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-8 animate-fade-in">
           <ul className="flex space-x-8">
             <li>
               <Link 
                 to="/" 
-                className="text-deepCharcoal hover:text-mutedTeal flex items-center font-medium text-base transition-all duration-300"
+                className="text-deepCharcoal hover:text-mutedTeal flex items-center font-medium text-base transition-all duration-300 hover:scale-105"
               >
                 <Home className="w-4 h-4 mr-1" />
-                Home
+                {language === 'en' ? 'Home' : 'الرئيسية'}
               </Link>
             </li>
             <li>
               <button 
                 onClick={() => scrollToSection('features')} 
-                className="text-deepCharcoal hover:text-mutedTeal link-underline font-medium text-base transition-all duration-300"
+                className="text-deepCharcoal hover:text-mutedTeal link-underline font-medium text-base transition-all duration-300 hover:scale-105"
               >
-                Features
+                {language === 'en' ? 'Features' : 'المميزات'}
               </button>
             </li>
             <li className="relative group">
-              <button className="text-deepCharcoal hover:text-mutedTeal flex items-center font-medium text-base transition-all duration-300">
-                Solutions <ChevronDown className="ml-1 h-4 w-4 group-hover:rotate-180 transition-transform duration-300" />
+              <button className="text-deepCharcoal hover:text-mutedTeal flex items-center font-medium text-base transition-all duration-300 hover:scale-105">
+                {language === 'en' ? 'Solutions' : 'الحلول'} <ChevronDown className="ml-1 h-4 w-4 group-hover:rotate-180 transition-transform duration-300" />
               </button>
-              <div className="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform group-hover:translate-y-0 translate-y-2">
+              <div className="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-2 group-hover:translate-y-0 animate-fade-in">
                 <div className="py-1" role="menu">
                   <button 
                     onClick={() => scrollToSection('solutions')} 
                     className="block w-full text-left px-4 py-2 text-sm text-deepCharcoal hover:bg-mutedTeal hover:text-white transition-colors duration-200"
                   >
-                    For Legal Teams
+                    {language === 'en' ? 'For Legal Teams' : 'للفرق القانونية'}
                   </button>
                   <button 
                     onClick={() => scrollToSection('solutions')} 
                     className="block w-full text-left px-4 py-2 text-sm text-deepCharcoal hover:bg-mutedTeal hover:text-white transition-colors duration-200"
                   >
-                    For SMEs & Startups
+                    {language === 'en' ? 'For SMEs & Startups' : 'للشركات الصغيرة والناشئة'}
                   </button>
                   <button 
                     onClick={() => scrollToSection('solutions')} 
                     className="block w-full text-left px-4 py-2 text-sm text-deepCharcoal hover:bg-mutedTeal hover:text-white transition-colors duration-200"
                   >
-                    For Government
+                    {language === 'en' ? 'For Government' : 'للحكومات'}
                   </button>
                 </div>
               </div>
@@ -112,26 +114,26 @@ const Navbar = () => {
             <li>
               <button 
                 onClick={() => scrollToSection('trust')} 
-                className="text-deepCharcoal hover:text-mutedTeal link-underline font-medium text-base transition-all duration-300"
+                className="text-deepCharcoal hover:text-mutedTeal link-underline font-medium text-base transition-all duration-300 hover:scale-105"
               >
-                About
+                {language === 'en' ? 'About' : 'عن الشركة'}
               </button>
             </li>
             <li>
-              <Link to="/pricing" className="text-deepCharcoal hover:text-mutedTeal link-underline font-medium text-base transition-all duration-300">
-                Pricing
+              <Link to="/pricing" className="text-deepCharcoal hover:text-mutedTeal link-underline font-medium text-base transition-all duration-300 hover:scale-105">
+                {language === 'en' ? 'Pricing' : 'الأسعار'}
               </Link>
             </li>
           </ul>
           <div className="flex items-center space-x-4">
             <button 
               onClick={toggleLanguage} 
-              className="flex items-center text-sm font-medium text-deepCharcoal hover:text-mutedTeal transition-colors duration-300"
+              className="flex items-center text-sm font-medium text-deepCharcoal hover:text-mutedTeal transition-colors duration-300 hover:scale-105"
             >
               <Globe className="w-4 h-4 mr-1" />
               {language === 'en' ? 'AR' : 'EN'}
             </button>
-            <Link to="/login" className="flex items-center text-navyTrust font-medium px-4 py-2 rounded-md border border-navyTrust hover:bg-navyTrust hover:text-white transition-all duration-300">
+            <Link to="/login" className="flex items-center text-navyTrust font-medium px-4 py-2 rounded-md border border-navyTrust hover:bg-navyTrust hover:text-white transition-all duration-300 hover:scale-105">
               <LogIn className="w-4 h-4 mr-2" />
               {language === 'en' ? 'Login' : 'تسجيل الدخول'}
             </Link>
@@ -158,7 +160,7 @@ const Navbar = () => {
                 onClick={() => setIsOpen(false)}
               >
                 <Home className="w-4 h-4 mr-1" />
-                Home
+                {language === 'en' ? 'Home' : 'الرئيسية'}
               </Link>
             </li>
             <li>
@@ -166,7 +168,7 @@ const Navbar = () => {
                 onClick={() => scrollToSection('features')}
                 className="text-deepCharcoal hover:text-mutedTeal block py-2 font-medium w-full text-left"
               >
-                Features
+                {language === 'en' ? 'Features' : 'المميزات'}
               </button>
             </li>
             <li>
@@ -174,7 +176,7 @@ const Navbar = () => {
                 onClick={() => scrollToSection('solutions')}
                 className="text-deepCharcoal hover:text-mutedTeal block py-2 font-medium w-full text-left"
               >
-                Solutions
+                {language === 'en' ? 'Solutions' : 'الحلول'}
               </button>
             </li>
             <li>
@@ -182,12 +184,12 @@ const Navbar = () => {
                 onClick={() => scrollToSection('trust')}
                 className="text-deepCharcoal hover:text-mutedTeal block py-2 font-medium w-full text-left"
               >
-                About
+                {language === 'en' ? 'About' : 'عن الشركة'}
               </button>
             </li>
             <li>
               <Link to="/pricing" className="text-deepCharcoal hover:text-mutedTeal block py-2 font-medium" onClick={() => setIsOpen(false)}>
-                Pricing
+                {language === 'en' ? 'Pricing' : 'الأسعار'}
               </Link>
             </li>
             <li className="pt-4 border-t border-gray-100">
