@@ -21,6 +21,7 @@ import Documentation from "./pages/Documentation";
 import API from "./pages/API";
 import Dashboard from "./pages/Dashboard";
 import Documents from "./pages/Documents";
+import DocumentDetail from "./pages/DocumentDetail";
 import Clients from "./pages/Clients";
 import Reports from "./pages/Reports";
 
@@ -51,6 +52,7 @@ const App = () => (
           {/* Backend UI Routes */}
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/documents" element={<Documents />} />
+          <Route path="/documents/:id" element={<DocumentDetail />} />
           <Route path="/clients" element={<Clients />} />
           <Route path="/reports" element={<Reports />} />
           
