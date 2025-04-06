@@ -2,10 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { cn } from "@/lib/utils";
-import { Menu, X, Globe, ChevronDown, LogIn, Shield, Home } from 'lucide-react';
-
-// Create a language context
-export type Language = 'en' | 'ar';
+import NavbarDesktop from './navbar/NavbarDesktop';
+import NavbarMobile from './navbar/NavbarMobile';
+import { Language } from '../types/language';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,8 +43,6 @@ const Navbar = () => {
     document.documentElement.lang = language === 'en' ? 'ar' : 'en';
   };
   
-  const isHomePage = location.pathname === '/';
-  
   return (
     <nav className={cn(
       "fixed top-0 left-0 w-full z-50 transition-all duration-500", 
@@ -65,155 +62,20 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-8 animate-fade-in">
-          <ul className="flex space-x-8">
-            <li>
-              <Link 
-                to="/" 
-                className="text-deepCharcoal hover:text-mutedTeal flex items-center font-medium text-base transition-all duration-300 hover:scale-105"
-              >
-                <Home className="w-4 h-4 mr-1" />
-                {language === 'en' ? 'Home' : 'الرئيسية'}
-              </Link>
-            </li>
-            <li>
-              <button 
-                onClick={() => scrollToSection('features')} 
-                className="text-deepCharcoal hover:text-mutedTeal link-underline font-medium text-base transition-all duration-300 hover:scale-105"
-              >
-                {language === 'en' ? 'Features' : 'المميزات'}
-              </button>
-            </li>
-            <li className="relative group">
-              <button className="text-deepCharcoal hover:text-mutedTeal flex items-center font-medium text-base transition-all duration-300 hover:scale-105">
-                {language === 'en' ? 'Solutions' : 'الحلول'} <ChevronDown className="ml-1 h-4 w-4 group-hover:rotate-180 transition-transform duration-300" />
-              </button>
-              <div className="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-2 group-hover:translate-y-0 animate-fade-in">
-                <div className="py-1" role="menu">
-                  <button 
-                    onClick={() => scrollToSection('solutions')} 
-                    className="block w-full text-left px-4 py-2 text-sm text-deepCharcoal hover:bg-mutedTeal hover:text-white transition-colors duration-200"
-                  >
-                    {language === 'en' ? 'For Legal Teams' : 'للفرق القانونية'}
-                  </button>
-                  <button 
-                    onClick={() => scrollToSection('solutions')} 
-                    className="block w-full text-left px-4 py-2 text-sm text-deepCharcoal hover:bg-mutedTeal hover:text-white transition-colors duration-200"
-                  >
-                    {language === 'en' ? 'For SMEs & Startups' : 'للشركات الصغيرة والناشئة'}
-                  </button>
-                  <button 
-                    onClick={() => scrollToSection('solutions')} 
-                    className="block w-full text-left px-4 py-2 text-sm text-deepCharcoal hover:bg-mutedTeal hover:text-white transition-colors duration-200"
-                  >
-                    {language === 'en' ? 'For Government' : 'للحكومات'}
-                  </button>
-                </div>
-              </div>
-            </li>
-            <li>
-              <button 
-                onClick={() => scrollToSection('trust')} 
-                className="text-deepCharcoal hover:text-mutedTeal link-underline font-medium text-base transition-all duration-300 hover:scale-105"
-              >
-                {language === 'en' ? 'About' : 'عن الشركة'}
-              </button>
-            </li>
-            <li>
-              <Link to="/pricing" className="text-deepCharcoal hover:text-mutedTeal link-underline font-medium text-base transition-all duration-300 hover:scale-105">
-                {language === 'en' ? 'Pricing' : 'الأسعار'}
-              </Link>
-            </li>
-          </ul>
-          <div className="flex items-center space-x-4">
-            <button 
-              onClick={toggleLanguage} 
-              className="flex items-center text-sm font-medium text-deepCharcoal hover:text-mutedTeal transition-colors duration-300 hover:scale-105"
-            >
-              <Globe className="w-4 h-4 mr-1" />
-              {language === 'en' ? 'AR' : 'EN'}
-            </button>
-            <Link to="/login" className="flex items-center text-navyTrust font-medium px-4 py-2 rounded-md border border-navyTrust hover:bg-navyTrust hover:text-white transition-all duration-300 hover:scale-105">
-              <LogIn className="w-4 h-4 mr-2" />
-              {language === 'en' ? 'Login' : 'تسجيل الدخول'}
-            </Link>
-            <Link to="/demo" className="bg-mutedTeal text-white px-5 py-2 rounded-md transition-all duration-300 hover:bg-opacity-90 button-hover-effect shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
-              {language === 'en' ? 'Request Demo' : 'طلب عرض توضيحي'}
-            </Link>
-          </div>
-        </div>
+        <NavbarDesktop 
+          language={language}
+          toggleLanguage={toggleLanguage}
+          scrollToSection={scrollToSection}
+        />
 
-        {/* Mobile Navigation Toggle */}
-        <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-deepCharcoal p-2 rounded-md hover:bg-mutedTeal/10 transition-colors duration-300">
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-
-      {/* Mobile Navigation Menu */}
-      <div className={`md:hidden absolute w-full bg-white shadow-lg transition-all duration-500 ease-in-out ${isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
-        <div className="container mx-auto px-4 py-4">
-          <ul className="space-y-4">
-            <li>
-              <Link 
-                to="/" 
-                className="text-deepCharcoal hover:text-mutedTeal flex items-center font-medium py-2 w-full"
-                onClick={() => setIsOpen(false)}
-              >
-                <Home className="w-4 h-4 mr-1" />
-                {language === 'en' ? 'Home' : 'الرئيسية'}
-              </Link>
-            </li>
-            <li>
-              <button
-                onClick={() => scrollToSection('features')}
-                className="text-deepCharcoal hover:text-mutedTeal block py-2 font-medium w-full text-left"
-              >
-                {language === 'en' ? 'Features' : 'المميزات'}
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => scrollToSection('solutions')}
-                className="text-deepCharcoal hover:text-mutedTeal block py-2 font-medium w-full text-left"
-              >
-                {language === 'en' ? 'Solutions' : 'الحلول'}
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => scrollToSection('trust')}
-                className="text-deepCharcoal hover:text-mutedTeal block py-2 font-medium w-full text-left"
-              >
-                {language === 'en' ? 'About' : 'عن الشركة'}
-              </button>
-            </li>
-            <li>
-              <Link to="/pricing" className="text-deepCharcoal hover:text-mutedTeal block py-2 font-medium" onClick={() => setIsOpen(false)}>
-                {language === 'en' ? 'Pricing' : 'الأسعار'}
-              </Link>
-            </li>
-            <li className="pt-4 border-t border-gray-100">
-              <div className="flex items-center justify-between">
-                <button 
-                  onClick={toggleLanguage} 
-                  className="flex items-center text-sm font-medium text-deepCharcoal"
-                >
-                  <Globe className="w-4 h-4 mr-1" />
-                  {language === 'en' ? 'Arabic' : 'English'}
-                </button>
-                <div className="flex space-x-2">
-                  <Link to="/login" className="flex items-center text-navyTrust border border-navyTrust px-3 py-2 rounded-md hover:bg-navyTrust hover:text-white transition-colors duration-300" onClick={() => setIsOpen(false)}>
-                    <LogIn className="w-4 h-4 mr-1" />
-                    {language === 'en' ? 'Login' : 'تسجيل الدخول'}
-                  </Link>
-                  <Link to="/demo" className="bg-mutedTeal text-white px-3 py-2 rounded-md hover:bg-mutedTeal/90 transition-colors duration-300" onClick={() => setIsOpen(false)}>
-                    {language === 'en' ? 'Request Demo' : 'طلب عرض'}
-                  </Link>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
+        {/* Mobile Navigation */}
+        <NavbarMobile 
+          language={language}
+          toggleLanguage={toggleLanguage}
+          scrollToSection={scrollToSection}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+        />
       </div>
     </nav>
   );

@@ -13,6 +13,9 @@ import FloatingCTA from '@/components/FloatingCTA';
 import PageTransition from '@/components/PageTransition';
 import { useToast } from '@/hooks/use-toast';
 
+// Note: We cannot directly fix ComplianceStatus.tsx as it's marked as read-only,
+// but we will handle its correct usage in any components that use it.
+
 const Index = () => {
   const { toast } = useToast();
   
