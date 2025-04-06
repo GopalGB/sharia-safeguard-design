@@ -1,13 +1,18 @@
 
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { cn } from "@/lib/utils";
-import { Menu, X, Globe, ChevronDown, LogIn, Shield } from 'lucide-react';
+import { Menu, X, Globe, ChevronDown, LogIn, Shield, Home } from 'lucide-react';
+
+// Create a language context
+export type Language = 'en' | 'ar';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [language, setLanguage] = useState<Language>('en');
   const navigate = useNavigate();
+  const location = useLocation();
   
   useEffect(() => {
     const handleScroll = () => {
@@ -31,11 +36,21 @@ const Navbar = () => {
       navigate('/#' + sectionId);
     }
   };
+
+  const toggleLanguage = () => {
+    setLanguage(prev => prev === 'en' ? 'ar' : 'en');
+    // Here you would also update any i18n library or context if implemented
+    document.documentElement.dir = language === 'en' ? 'rtl' : 'ltr';
+    document.documentElement.lang = language === 'en' ? 'ar' : 'en';
+  };
   
-  return <nav className={cn(
-    "fixed top-0 left-0 w-full z-50 transition-all duration-500", 
-    scrolled ? "bg-white bg-opacity-95 backdrop-filter backdrop-blur-md shadow-md py-3" : "bg-transparent py-5"
-  )}>
+  const isHomePage = location.pathname === '/';
+  
+  return (
+    <nav className={cn(
+      "fixed top-0 left-0 w-full z-50 transition-all duration-500", 
+      scrolled ? "bg-white bg-opacity-95 backdrop-filter backdrop-blur-md shadow-md py-3" : "bg-transparent py-5"
+    )}>
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center">
           <Link to="/" className="flex items-center group">
@@ -50,6 +65,15 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
           <ul className="flex space-x-8">
+            <li>
+              <Link 
+                to="/" 
+                className="text-deepCharcoal hover:text-mutedTeal flex items-center font-medium text-base transition-all duration-300"
+              >
+                <Home className="w-4 h-4 mr-1" />
+                Home
+              </Link>
+            </li>
             <li>
               <button 
                 onClick={() => scrollToSection('features')} 
@@ -100,16 +124,19 @@ const Navbar = () => {
             </li>
           </ul>
           <div className="flex items-center space-x-4">
-            <button className="flex items-center text-sm font-medium text-deepCharcoal hover:text-mutedTeal transition-colors duration-300">
+            <button 
+              onClick={toggleLanguage} 
+              className="flex items-center text-sm font-medium text-deepCharcoal hover:text-mutedTeal transition-colors duration-300"
+            >
               <Globe className="w-4 h-4 mr-1" />
-              EN
+              {language === 'en' ? 'AR' : 'EN'}
             </button>
             <Link to="/login" className="flex items-center text-navyTrust font-medium px-4 py-2 rounded-md border border-navyTrust hover:bg-navyTrust hover:text-white transition-all duration-300">
               <LogIn className="w-4 h-4 mr-2" />
-              Login
+              {language === 'en' ? 'Login' : 'تسجيل الدخول'}
             </Link>
             <Link to="/demo" className="bg-mutedTeal text-white px-5 py-2 rounded-md transition-all duration-300 hover:bg-opacity-90 button-hover-effect shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
-              Request Demo
+              {language === 'en' ? 'Request Demo' : 'طلب عرض توضيحي'}
             </Link>
           </div>
         </div>
@@ -124,6 +151,16 @@ const Navbar = () => {
       <div className={`md:hidden absolute w-full bg-white shadow-lg transition-all duration-500 ease-in-out ${isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
         <div className="container mx-auto px-4 py-4">
           <ul className="space-y-4">
+            <li>
+              <Link 
+                to="/" 
+                className="text-deepCharcoal hover:text-mutedTeal flex items-center font-medium py-2 w-full"
+                onClick={() => setIsOpen(false)}
+              >
+                <Home className="w-4 h-4 mr-1" />
+                Home
+              </Link>
+            </li>
             <li>
               <button
                 onClick={() => scrollToSection('features')}
@@ -155,17 +192,20 @@ const Navbar = () => {
             </li>
             <li className="pt-4 border-t border-gray-100">
               <div className="flex items-center justify-between">
-                <button className="flex items-center text-sm font-medium text-deepCharcoal">
+                <button 
+                  onClick={toggleLanguage} 
+                  className="flex items-center text-sm font-medium text-deepCharcoal"
+                >
                   <Globe className="w-4 h-4 mr-1" />
-                  English
+                  {language === 'en' ? 'Arabic' : 'English'}
                 </button>
                 <div className="flex space-x-2">
                   <Link to="/login" className="flex items-center text-navyTrust border border-navyTrust px-3 py-2 rounded-md hover:bg-navyTrust hover:text-white transition-colors duration-300" onClick={() => setIsOpen(false)}>
                     <LogIn className="w-4 h-4 mr-1" />
-                    Login
+                    {language === 'en' ? 'Login' : 'تسجيل الدخول'}
                   </Link>
                   <Link to="/demo" className="bg-mutedTeal text-white px-3 py-2 rounded-md hover:bg-mutedTeal/90 transition-colors duration-300" onClick={() => setIsOpen(false)}>
-                    Request Demo
+                    {language === 'en' ? 'Request Demo' : 'طلب عرض'}
                   </Link>
                 </div>
               </div>
@@ -173,7 +213,8 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-    </nav>;
+    </nav>
+  );
 };
 
 export default Navbar;
