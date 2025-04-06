@@ -24,10 +24,11 @@ const ComplianceStatus = () => {
   }, []);
 
   // Custom animation for pie chart
+  // Using 'ease' instead of 'ease-out' as it must be one of the valid AnimationTiming types
   const animationProps = animated ? {
     isAnimationActive: true,
     animationDuration: 1000,
-    animationEasing: 'ease-out'
+    animationEasing: 'ease'
   } : {
     isAnimationActive: false
   };
