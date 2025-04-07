@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Shield, FileText, Check, FileCheck, Scale, Gavel, Award, CheckCircle, Lock } from 'lucide-react';
@@ -96,7 +97,7 @@ const Hero = () => {
     const cleanup = animateGeometricPattern();
     return cleanup;
   }, []);
-  return <div className="relative min-h-screen flex items-center pt-16 overflow-hidden geometric-pattern py-[17px]">
+  return <div className="relative min-h-screen flex items-center pt-0 overflow-hidden geometric-pattern py-0">
       <div className="container mx-auto px-4 z-10">
         <div className="flex flex-col md:flex-row md:items-center">
           <div className="md:w-1/2 md:pr-8">
