@@ -85,7 +85,7 @@ const Index = () => {
     <PageTransition>
       <div className="min-h-screen flex flex-col">
         <Navbar />
-        <main className="flex-grow pt-24 md:pt-28"> {/* Increased padding to account for fixed navbar */}
+        <main className="flex-grow pt-16 md:pt-20"> {/* Reduced padding to remove space after navbar */}
           <Hero />
           <Features />
           <HowItWorks />
