@@ -1,43 +1,26 @@
-
 import React from 'react';
-import { 
-  Shield, 
-  FileText, 
-  Scale, 
-  BookOpen, 
-  Lock, 
-  Globe, 
-  Database, 
-  Check
-} from 'lucide-react';
-
+import { Shield, FileText, Scale, BookOpen, Lock, Globe, Database, Check } from 'lucide-react';
 const Features = () => {
-  const features = [
-    {
-      id: 'ai-compliance',
-      icon: <Shield className="h-12 w-12 text-mutedTeal" />,
-      title: 'AI-Powered Compliance',
-      description: 'Our advanced NLP technology is optimized for Arabic and English legal documents, ensuring 98% accuracy in compliance verification.',
-      benefits: ['Real-time regulatory monitoring', 'Multilingual document processing', 'Automated compliance checks']
-    },
-    {
-      id: 'document-automation',
-      icon: <FileText className="h-12 w-12 text-mutedTeal" />,
-      title: 'Document Automation',
-      description: 'Transform complex legal documents into automated workflows that save time and reduce human error in contract management.',
-      benefits: ['Smart contract generation', 'Automated document review', 'Version control and audit trails']
-    },
-    {
-      id: 'ethical-ai',
-      icon: <Scale className="h-12 w-12 text-mutedTeal" />,
-      title: 'Ethical AI Governance',
-      description: 'Our AI framework is built with Islamic ethical principles at its core, ensuring transparent and culturally sensitive decision-making.',
-      benefits: ['Human-in-the-loop validation', 'Transparent reasoning', 'Sharia-compliant algorithms']
-    }
-  ];
-
-  return (
-    <section id="features" className="section-padding geometric-pattern">
+  const features = [{
+    id: 'ai-compliance',
+    icon: <Shield className="h-12 w-12 text-mutedTeal" />,
+    title: 'AI-Powered Compliance',
+    description: 'Our advanced NLP technology is optimized for Arabic and English legal documents, ensuring 98% accuracy in compliance verification.',
+    benefits: ['Real-time regulatory monitoring', 'Multilingual document processing', 'Automated compliance checks']
+  }, {
+    id: 'document-automation',
+    icon: <FileText className="h-12 w-12 text-mutedTeal" />,
+    title: 'Document Automation',
+    description: 'Transform complex legal documents into automated workflows that save time and reduce human error in contract management.',
+    benefits: ['Smart contract generation', 'Automated document review', 'Version control and audit trails']
+  }, {
+    id: 'ethical-ai',
+    icon: <Scale className="h-12 w-12 text-mutedTeal" />,
+    title: 'Ethical AI Governance',
+    description: 'Our AI framework is built with Islamic ethical principles at its core, ensuring transparent and culturally sensitive decision-making.',
+    benefits: ['Human-in-the-loop validation', 'Transparent reasoning', 'Sharia-compliant algorithms']
+  }];
+  return <section id="features" className="section-padding geometric-pattern py-[4px] px-0">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16 animate-slide-up">
           <div className="inline-block bg-mutedTeal/10 text-mutedTeal px-3 py-1 rounded-full text-sm font-medium mb-4">
@@ -52,12 +35,9 @@ const Features = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <div 
-              key={feature.id} 
-              className="feature-card group animate-fade-in bg-white"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
+          {features.map((feature, index) => <div key={feature.id} className="feature-card group animate-fade-in bg-white" style={{
+          animationDelay: `${index * 0.1}s`
+        }}>
               <div className="mb-6 relative">
                 <div className="inline-block p-4 rounded-lg bg-mutedTeal/10 group-hover:bg-mutedTeal/20 transition-all duration-300">
                   {feature.icon}
@@ -71,17 +51,14 @@ const Features = () => {
                 {feature.description}
               </p>
               <ul className="space-y-3">
-                {feature.benefits.map((benefit, i) => (
-                  <li key={i} className="flex items-start">
+                {feature.benefits.map((benefit, i) => <li key={i} className="flex items-start">
                     <div className="flex-shrink-0 text-mutedTeal mr-2">
                       <Check className="h-6 w-6" />
                     </div>
                     <span className="text-sm text-deepCharcoal">{benefit}</span>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
-            </div>
-          ))}
+            </div>)}
         </div>
 
         <div className="mt-20 py-10 px-6 md:px-10 rounded-xl glass-card max-w-5xl mx-auto animate-scale-in">
@@ -121,7 +98,7 @@ const Features = () => {
                   <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
                     <defs>
                       <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
-                        <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" strokeWidth="0.5"/>
+                        <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" strokeWidth="0.5" />
                       </pattern>
                     </defs>
                     <rect width="100%" height="100%" fill="url(#grid)" />
@@ -143,8 +120,6 @@ const Features = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Features;
