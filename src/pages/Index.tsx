@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -17,29 +16,30 @@ import { useToast } from '@/hooks/use-toast';
 // but we will handle its correct usage in any components that use it.
 
 const Index = () => {
-  const { toast } = useToast();
-  
+  const {
+    toast
+  } = useToast();
   useEffect(() => {
     // Welcome toast notification
     setTimeout(() => {
       toast({
         title: "Welcome to ShariaGuard",
         description: "Experience the future of compliance verification",
-        duration: 5000,
+        duration: 5000
       });
     }, 1500);
-    
+
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
+      anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const targetId = this.getAttribute('href');
         if (!targetId || targetId === '#') return;
-        
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
           window.scrollTo({
-            top: targetElement.offsetTop - 80, // Offset for the navbar
+            top: targetElement.offsetTop - 80,
+            // Offset for the navbar
             behavior: 'smooth'
           });
         }
@@ -52,12 +52,11 @@ const Index = () => {
       elements.forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
         const elementVisible = 150;
-        
         if (elementTop < window.innerHeight - elementVisible) {
           element.classList.add('visible');
         }
       });
-      
+
       // Stagger animations
       const staggerContainers = document.querySelectorAll('.stagger-container');
       staggerContainers.forEach(container => {
@@ -72,20 +71,17 @@ const Index = () => {
         }
       });
     };
-
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Check on initial load
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [toast]);
-
-  return (
-    <PageTransition>
+  return <PageTransition>
       <div className="min-h-screen flex flex-col">
         <Navbar />
-        <main className="flex-grow pt-16 md:pt-20"> {/* Reduced padding to remove space after navbar */}
+        <main className="flex-grow pt-16 md:pt-20 py-0"> {/* Reduced padding to remove space after navbar */}
           <Hero />
           <Features />
           <HowItWorks />
@@ -97,8 +93,6 @@ const Index = () => {
         <Footer />
         <FloatingCTA />
       </div>
-    </PageTransition>
-  );
+    </PageTransition>;
 };
-
 export default Index;
