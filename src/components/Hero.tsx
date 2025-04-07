@@ -1,59 +1,44 @@
-
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Shield, FileText, Check, FileCheck, Scale, Gavel, Award, CheckCircle, Lock } from 'lucide-react';
 import TypedHeading from "./TypedHeading";
-
 const Hero = () => {
   const animationRef = useRef<HTMLDivElement>(null);
   const [activeFeature, setActiveFeature] = useState(0);
   const [animateElements, setAnimateElements] = useState(false);
-  
-  const features = [
-    { 
-      icon: <FileCheck className="h-6 w-6 text-mutedTeal opacity-90" />, 
-      text: "Sharia compliant" 
-    },
-    { 
-      icon: <Shield className="h-6 w-6 text-navyTrust opacity-90" />, 
-      text: "Verified contract" 
-    },
-    { 
-      icon: <Scale className="h-6 w-6 text-uaeRed opacity-90" />, 
-      text: "Legal approved" 
-    },
-    { 
-      icon: <Gavel className="h-6 w-6 text-mutedCoral opacity-90" />, 
-      text: "Court validated" 
-    }
-  ];
-
+  const features = [{
+    icon: <FileCheck className="h-6 w-6 text-mutedTeal opacity-90" />,
+    text: "Sharia compliant"
+  }, {
+    icon: <Shield className="h-6 w-6 text-navyTrust opacity-90" />,
+    text: "Verified contract"
+  }, {
+    icon: <Scale className="h-6 w-6 text-uaeRed opacity-90" />,
+    text: "Legal approved"
+  }, {
+    icon: <Gavel className="h-6 w-6 text-mutedCoral opacity-90" />,
+    text: "Court validated"
+  }];
   useEffect(() => {
     setTimeout(() => {
       setAnimateElements(true);
     }, 300);
-
     const interval = setInterval(() => {
-      setActiveFeature((prev) => (prev + 1) % features.length);
+      setActiveFeature(prev => (prev + 1) % features.length);
     }, 3000);
-    
     return () => {
       clearInterval(interval);
     };
   }, []);
-
   useEffect(() => {
     if (!animationRef.current) return;
-    
     const animateGeometricPattern = () => {
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d')!;
       const container = animationRef.current!;
-      
       canvas.width = container.offsetWidth;
       canvas.height = container.offsetHeight;
       container.appendChild(canvas);
-      
       const particles: Array<{
         x: number;
         y: number;
@@ -63,7 +48,6 @@ const Hero = () => {
         opacity: number;
         color: string;
       }> = [];
-      
       for (let i = 0; i < 30; i++) {
         particles.push({
           x: Math.random() * canvas.width,
@@ -75,27 +59,21 @@ const Hero = () => {
           color: ['#1A365D', '#2A9D8F', '#E9C46A', '#8A1538'][Math.floor(Math.random() * 4)]
         });
       }
-      
       function drawParticles() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
         particles.forEach((particle, i) => {
           ctx.beginPath();
           ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
           ctx.fillStyle = particle.color + Math.floor(particle.opacity * 255).toString(16).padStart(2, '0');
           ctx.fill();
-          
           particle.x += particle.speedX;
           particle.y += particle.speedY;
-          
           if (particle.x < 0 || particle.x > canvas.width) particle.speedX *= -1;
           if (particle.y < 0 || particle.y > canvas.height) particle.speedY *= -1;
-          
           for (let j = i + 1; j < particles.length; j++) {
             const dx = particles[j].x - particle.x;
             const dy = particles[j].y - particle.y;
             const distance = Math.sqrt(dx * dx + dy * dy);
-            
             if (distance < 100) {
               ctx.beginPath();
               ctx.moveTo(particle.x, particle.y);
@@ -106,58 +84,40 @@ const Hero = () => {
             }
           }
         });
-        
         requestAnimationFrame(drawParticles);
       }
-      
       drawParticles();
-      
       return () => {
         if (container && canvas) {
           container.removeChild(canvas);
         }
       };
     };
-    
     const cleanup = animateGeometricPattern();
     return cleanup;
   }, []);
-
-  return (
-    <div className="relative min-h-screen flex items-center pt-16 overflow-hidden geometric-pattern">
+  return <div className="relative min-h-screen flex items-center pt-16 overflow-hidden geometric-pattern py-[17px]">
       <div className="container mx-auto px-4 z-10">
         <div className="flex flex-col md:flex-row md:items-center">
           <div className="md:w-1/2 md:pr-8">
-            <div 
-              className={`inline-block bg-mutedTeal/10 text-mutedTeal px-3 py-1 rounded-full text-sm font-medium mb-6 transition-all duration-700 ${
-                animateElements ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
-              }`}
-              style={{ transitionDelay: '100ms' }}
-            >
+            <div className={`inline-block bg-mutedTeal/10 text-mutedTeal px-3 py-1 rounded-full text-sm font-medium mb-6 transition-all duration-700 ${animateElements ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`} style={{
+            transitionDelay: '100ms'
+          }}>
               Stop Risking Non-Compliance
             </div>
-            <div className={`transition-all duration-700 ${animateElements ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}
-                style={{ transitionDelay: '300ms' }}>
-              <TypedHeading 
-                englishText="Code & Creed. Perfected."
-                arabicText="الرمز والعقيدة. مُتقَن."
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-navyTrust mb-6 leading-tight"
-              />
+            <div className={`transition-all duration-700 ${animateElements ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`} style={{
+            transitionDelay: '300ms'
+          }}>
+              <TypedHeading englishText="Code & Creed. Perfected." arabicText="الرمز والعقيدة. مُتقَن." className="text-4xl md:text-5xl lg:text-6xl font-bold text-navyTrust mb-6 leading-tight" />
             </div>
-            <p 
-              className={`text-lg md:text-xl text-deepCharcoal/80 mb-8 max-w-xl transition-all duration-700 ${
-                animateElements ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
-              }`}
-              style={{ transitionDelay: '500ms' }}
-            >
+            <p className={`text-lg md:text-xl text-deepCharcoal/80 mb-8 max-w-xl transition-all duration-700 ${animateElements ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`} style={{
+            transitionDelay: '500ms'
+          }}>
               Missing one compliance detail can destroy your reputation. Our AI finds what others miss.
             </p>
-            <div 
-              className={`flex flex-wrap gap-4 mb-8 transition-all duration-700 ${
-                animateElements ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
-              }`}
-              style={{ transitionDelay: '700ms' }}
-            >
+            <div className={`flex flex-wrap gap-4 mb-8 transition-all duration-700 ${animateElements ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`} style={{
+            transitionDelay: '700ms'
+          }}>
               <Link to="/demo" className="bg-mutedTeal text-white font-medium px-6 py-3 rounded-lg shadow-md flex items-center justify-center hover:bg-mutedTeal/90 transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg relative overflow-hidden group">
                 <span className="relative z-10">Eliminate Risk Now</span>
                 <ArrowRight className="ml-2 h-5 w-5 relative z-10 transition-transform group-hover:translate-x-1" />
@@ -168,12 +128,9 @@ const Hero = () => {
                 <span className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-mutedTeal to-navyTrust w-0 group-hover:w-full transition-all duration-500"></span>
               </a>
             </div>
-            <div 
-              className={`grid grid-cols-2 gap-4 max-w-md transition-all duration-700 ${
-                animateElements ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
-              }`} 
-              style={{ transitionDelay: '900ms' }}
-            >
+            <div className={`grid grid-cols-2 gap-4 max-w-md transition-all duration-700 ${animateElements ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`} style={{
+            transitionDelay: '900ms'
+          }}>
               <div className="flex items-start group hover:transform hover:translate-x-1 transition-all duration-300">
                 <div className="flex-shrink-0 bg-mutedTeal/10 rounded-full p-1 group-hover:bg-mutedTeal/20 transition-colors duration-300">
                   <Check className="h-4 w-4 text-mutedTeal" />
@@ -208,12 +165,9 @@ const Hero = () => {
               </div>
             </div>
           </div>
-          <div 
-            className={`md:w-1/2 mt-12 md:mt-0 transition-all duration-1000 ${
-              animateElements ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'
-            }`}
-            style={{ transitionDelay: '500ms' }}
-          >
+          <div className={`md:w-1/2 mt-12 md:mt-0 transition-all duration-1000 ${animateElements ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`} style={{
+          transitionDelay: '500ms'
+        }}>
             <div className="relative">
               <div ref={animationRef} className="aspect-square md:aspect-auto md:h-[500px] rounded-2xl bg-gradient-to-br from-navyTrust/10 to-mutedTeal/10 backdrop-blur-sm border border-white/30 shadow-xl flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -254,7 +208,9 @@ const Hero = () => {
                         <div className="flex-1 h-8 bg-gradient-to-r from-navyTrust/10 to-mutedTeal/5 rounded-md flex items-center px-3 overflow-hidden shadow-sm relative">
                           <div className="flex w-full">
                             <span className="text-xs text-navyTrust font-medium whitespace-nowrap flex-shrink-0 w-full flex items-center">
-                              {React.cloneElement(features[activeFeature].icon, { className: "h-3.5 w-3.5 mr-1.5" })}
+                              {React.cloneElement(features[activeFeature].icon, {
+                              className: "h-3.5 w-3.5 mr-1.5"
+                            })}
                               {features[activeFeature].text}
                             </span>
                           </div>
@@ -278,8 +234,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Hero;
