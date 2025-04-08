@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, Home, LogIn } from 'lucide-react';
+import { Menu, X, LogIn } from 'lucide-react';
 import LanguageSwitcher from './LanguageSwitcher';
 import { Language } from '../../types/language';
 
@@ -35,7 +35,6 @@ const NavbarMobile = ({ language, toggleLanguage, scrollToSection, isOpen, setIs
                 className="text-deepCharcoal hover:text-mutedTeal flex items-center font-medium py-2 w-full"
                 onClick={() => setIsOpen(false)}
               >
-                <Home className="w-4 h-4 mr-1" />
                 {language === 'en' ? 'Home' : 'الرئيسية'}
               </Link>
             </li>

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Home, ChevronDown, LogIn } from 'lucide-react';
+import { ChevronDown, LogIn } from 'lucide-react';
 import LanguageSwitcher from './LanguageSwitcher';
 import { Language } from '../../types/language';
 
@@ -20,7 +20,6 @@ const NavbarDesktop = ({ language, toggleLanguage, scrollToSection }: NavbarDesk
             to="/" 
             className="text-deepCharcoal hover:text-mutedTeal flex items-center font-medium text-base transition-all duration-300 hover:scale-105"
           >
-            <Home className="w-4 h-4 mr-1" />
             {language === 'en' ? 'Home' : 'الرئيسية'}
           </Link>
         </li>
