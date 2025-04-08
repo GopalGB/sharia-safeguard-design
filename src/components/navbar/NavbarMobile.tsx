@@ -26,7 +26,7 @@ const NavbarMobile = ({ language, toggleLanguage, scrollToSection, isOpen, setIs
       </button>
 
       {/* Mobile Navigation Menu */}
-      <div className={`md:hidden absolute w-full bg-white shadow-lg transition-all duration-500 ease-in-out ${isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+      <div className={`md:hidden fixed top-[60px] left-0 right-0 bg-white shadow-lg transition-all duration-500 ease-in-out ${isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
         <div className="container mx-auto px-4 py-4">
           <ul className="space-y-4">
             <li>

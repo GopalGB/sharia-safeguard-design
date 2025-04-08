@@ -13,9 +13,6 @@ import FloatingCTA from '@/components/FloatingCTA';
 import PageTransition from '@/components/PageTransition';
 import { useToast } from '@/hooks/use-toast';
 
-// Note: We cannot directly fix ComplianceStatus.tsx as it's marked as read-only,
-// but we will handle its correct usage in any components that use it.
-
 const Index = () => {
   const { toast } = useToast();
   
@@ -85,7 +82,7 @@ const Index = () => {
     <PageTransition>
       <div className="min-h-screen flex flex-col">
         <Navbar />
-        <main className="flex-grow pt-0"> {/* Removed all padding from the top */}
+        <main className="flex-grow pt-0">
           <Hero />
           <Features />
           <HowItWorks />
