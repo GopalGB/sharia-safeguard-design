@@ -1,9 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { cn } from "@/lib/utils";
 import NavbarDesktop from './navbar/NavbarDesktop';
 import NavbarMobile from './navbar/NavbarMobile';
+import AnimatedLogo from './navbar/AnimatedLogo';
 import { Language } from '../types/language';
 
 const Navbar = () => {
@@ -52,13 +53,7 @@ const Navbar = () => {
     )}>
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center">
-          <Link to="/" className="flex items-center group">
-            <img 
-              src="/lovable-uploads/389d5a05-7129-42d5-bec5-e81650db6590.png" 
-              alt="ShariaGuard Logo" 
-              className="h-12 md:h-14 transition-all duration-300 object-fill group-hover:scale-105" 
-            />
-          </Link>
+          <AnimatedLogo size={scrolled ? "sm" : "md"} showText={true} />
         </div>
 
         {/* Desktop Navigation */}
