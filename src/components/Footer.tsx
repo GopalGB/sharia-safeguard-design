@@ -24,9 +24,9 @@ const Footer = () => {
             <div className="mb-6">
               <Link to="/">
                 <img 
-                  src="/lovable-uploads/78b75dca-97fc-448a-b653-c6945c45ac1f.png" 
+                  src="/lovable-uploads/cfa6a0c9-b1d2-458a-92b6-32083849db01.png" 
                   alt="ShariaGuard Logo" 
-                  className="h-12 mb-4 invert brightness-0 opacity-90"
+                  className="h-12 mb-4 brightness-100" 
                 />
               </Link>
               <p className="text-white/70 mt-3">

@@ -1,7 +1,6 @@
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, Check } from 'lucide-react';
 
 interface AnimatedLogoProps {
   size?: 'sm' | 'md' | 'lg';
@@ -10,16 +9,15 @@ interface AnimatedLogoProps {
 
 const AnimatedLogo = ({ size = 'md', showText = true }: AnimatedLogoProps) => {
   const [isAnimating, setIsAnimating] = useState(false);
-  const logoRef = useRef<HTMLDivElement>(null);
   
   // Set dimensions based on size prop
   const dimensions = {
-    sm: { logoSize: 'h-8 w-8', textSize: 'text-lg', iconSize: 16 },
-    md: { logoSize: 'h-10 w-10', textSize: 'text-xl', iconSize: 20 },
-    lg: { logoSize: 'h-12 w-12', textSize: 'text-2xl', iconSize: 24 }
+    sm: { logoSize: 'h-8', textSize: 'text-lg' },
+    md: { logoSize: 'h-10', textSize: 'text-xl' },
+    lg: { logoSize: 'h-12', textSize: 'text-2xl' }
   };
   
-  const { logoSize, textSize, iconSize } = dimensions[size];
+  const { logoSize, textSize } = dimensions[size];
 
   // Start animation when component mounts
   useEffect(() => {
@@ -38,36 +36,21 @@ const AnimatedLogo = ({ size = 'md', showText = true }: AnimatedLogoProps) => {
   return (
     <Link to="/" className="flex items-center group" aria-label="ShariaGuard Home">
       <div 
-        ref={logoRef}
         className="flex items-center" 
         onMouseEnter={handleLogoHover}
       >
-        {/* Animated Logo Mark */}
-        <div className={`relative ${logoSize} flex items-center justify-center mr-2`}>
-          <div className={`absolute inset-0 bg-gradient-to-r from-mutedTeal to-navyTrust rounded-lg transform transition-all duration-700 ${isAnimating ? 'scale-100 rotate-0 opacity-100' : 'scale-90 -rotate-90 opacity-0'}`}></div>
-          
-          <Shield
-            size={iconSize}
-            className={`text-white absolute z-10 transition-all duration-500 ${isAnimating ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}
-            style={{ transitionDelay: '300ms' }}
+        {/* Logo Image */}
+        <div className={`relative ${logoSize} mr-2`}>
+          <img
+            src="/lovable-uploads/cfa6a0c9-b1d2-458a-92b6-32083849db01.png"
+            alt="ShariaGuard Logo"
+            className={`h-full transform transition-all duration-700 ${
+              isAnimating ? 'scale-100 opacity-100' : 'scale-95 opacity-90'
+            }`}
           />
-          
-          <Check
-            size={iconSize * 0.6}
-            className={`text-white absolute z-20 transition-all duration-500 ${isAnimating ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}
-            style={{ transitionDelay: '600ms' }}
-          />
-          
-          {/* Pulsing effect around logo */}
-          <div className={`absolute inset-0 bg-mutedTeal/20 rounded-lg transform transition-all duration-1000 ${isAnimating ? 'scale-110 opacity-100' : 'scale-100 opacity-0'}`}
-            style={{ 
-              animation: isAnimating ? 'pulse 2s infinite' : 'none',
-              transitionDelay: '300ms'
-            }}
-          ></div>
         </div>
         
-        {/* Logo Text */}
+        {/* Logo Text (only shown if showText is true) */}
         {showText && (
           <div className="flex flex-col">
             <span 
