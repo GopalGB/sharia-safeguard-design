@@ -1,24 +1,21 @@
 
 import React from 'react';
 import { 
-  Search, 
-  Bell, 
   Upload,
   BarChart3,
   Users,
   FileText,
   AlertTriangle
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import PageTransition from '@/components/PageTransition';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import ProcessingPipeline from '@/components/dashboard/ProcessingPipeline';
 import ComplianceStatus from '@/components/dashboard/ComplianceStatus';
 import RecentDocuments from '@/components/dashboard/RecentDocuments';
 import ComplianceAlerts from '@/components/dashboard/ComplianceAlerts';
 import ResourcesSection from '@/components/dashboard/ResourcesSection';
+import DashboardHeader from '@/components/dashboard/DashboardHeader';
 import { useToast } from '@/hooks/use-toast';
 
 const Dashboard = () => {
@@ -38,42 +35,7 @@ const Dashboard = () => {
     <PageTransition>
       <div className="min-h-screen bg-gray-50">
         {/* Header */}
-        <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
-          <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-            <div className="flex items-center">
-              <Link to="/" className="mr-8">
-                <img 
-                  src="/lovable-uploads/78b75dca-97fc-448a-b653-c6945c45ac1f.png" 
-                  alt="ShariaGuard Logo" 
-                  className="h-10" 
-                />
-              </Link>
-              <div className="hidden md:flex space-x-6">
-                <Link to="/dashboard" className="text-navyTrust font-medium px-1 py-2 border-b-2 border-mutedTeal">Dashboard</Link>
-                <Link to="/documents" className="text-deepCharcoal/70 hover:text-navyTrust px-1 py-2 border-b-2 border-transparent">Documents</Link>
-                <Link to="/clients" className="text-deepCharcoal/70 hover:text-navyTrust px-1 py-2 border-b-2 border-transparent">Clients</Link>
-                <Link to="/reports" className="text-deepCharcoal/70 hover:text-navyTrust px-1 py-2 border-b-2 border-transparent">Reports</Link>
-              </div>
-            </div>
-            <div className="flex items-center space-x-4">
-              <div className="relative hidden md:block">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
-                <Input 
-                  type="text" 
-                  placeholder="Search..." 
-                  className="pl-10 w-60 h-9 rounded-full bg-gray-100 border-gray-200"
-                />
-              </div>
-              <Button variant="ghost" size="icon" className="relative">
-                <Bell className="h-5 w-5 text-gray-500" />
-                <span className="absolute top-0 right-0 h-2 w-2 bg-red-500 rounded-full"></span>
-              </Button>
-              <div className="h-8 w-8 rounded-full bg-mutedTeal text-white flex items-center justify-center font-medium">
-                AH
-              </div>
-            </div>
-          </div>
-        </header>
+        <DashboardHeader />
 
         {/* Main Content */}
         <main className="container mx-auto px-4 py-8">
@@ -171,6 +133,30 @@ const Dashboard = () => {
             <ResourcesSection />
           </div>
         </main>
+
+        {/* Footer */}
+        <footer className="bg-white border-t border-gray-200 py-6">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-col md:flex-row items-center justify-between">
+              <div className="mb-4 md:mb-0">
+                <p className="text-sm text-deepCharcoal/60">
+                  © 2025 ShariaGuard. All rights reserved.
+                </p>
+              </div>
+              <div className="flex items-center space-x-4">
+                <div className="px-2 py-1 bg-lightSand rounded-md border border-gray-200">
+                  <span className="text-xs font-medium text-navyTrust">UAE-Hosted</span>
+                </div>
+                <div className="px-2 py-1 bg-lightSand rounded-md border border-gray-200">
+                  <span className="text-xs font-medium text-navyTrust">PDPL Compliant</span>
+                </div>
+                <div className="px-2 py-1 bg-lightSand rounded-md border border-gray-200">
+                  <span className="text-xs font-medium text-navyTrust">AWS me-central-1</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
     </PageTransition>
   );

@@ -15,7 +15,7 @@ const HeroVisual = ({ animateElements }: { animateElements: boolean }) => {
       }}
     >
       <div className="relative">
-        <Link to="/dashboard" className="block">
+        <Link to="/dashboard" className="block hover:scale-[1.02] transition-transform duration-300">
           <HeroAnimation>
             <HeroFeatureCard />
           </HeroAnimation>
