@@ -3,8 +3,25 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import HeroAnimation from './HeroAnimation';
 import HeroFeatureCard from './HeroFeatureCard';
+import { useToast } from '@/hooks/use-toast';
 
 const HeroVisual = ({ animateElements }: { animateElements: boolean }) => {
+  const { toast } = useToast();
+  
+  const handleDashboardClick = (e: React.MouseEvent) => {
+    // This would typically check if user is logged in
+    const isLoggedIn = false; // This would be determined by your auth state
+    
+    if (!isLoggedIn) {
+      e.preventDefault();
+      toast({
+        title: "Login Required",
+        description: "Please log in to access the dashboard",
+        variant: "destructive",
+      });
+    }
+  };
+  
   return (
     <div 
       className={`md:w-1/2 mt-12 md:mt-0 transition-all duration-1000 ${
@@ -15,7 +32,11 @@ const HeroVisual = ({ animateElements }: { animateElements: boolean }) => {
       }}
     >
       <div className="relative">
-        <Link to="/dashboard" className="block hover:scale-[1.02] transition-transform duration-300">
+        <Link 
+          to="/dashboard" 
+          className="block hover:scale-[1.02] transition-transform duration-300"
+          onClick={handleDashboardClick}
+        >
           <HeroAnimation>
             <HeroFeatureCard />
           </HeroAnimation>

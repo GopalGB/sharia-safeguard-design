@@ -1,18 +1,21 @@
 
-import React from 'react';
-import { FileText, MoreHorizontal, CheckCircle, AlertTriangle, Clock } from 'lucide-react';
+import React, { useState } from 'react';
+import { FileText, MoreHorizontal, CheckCircle, AlertTriangle, Clock, Download, Eye, Share2, Trash2 } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { useToast } from '@/hooks/use-toast';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { Link } from 'react-router-dom';
 
 const RecentDocuments = () => {
+  const { toast } = useToast();
   // Mock data for recent documents
-  const documents = [
+  const [documents, setDocuments] = useState([
     { 
       id: 1, 
       name: 'Employment Contract - Al Fardan Group', 
@@ -45,7 +48,7 @@ const RecentDocuments = () => {
       type: 'PDF',
       size: '1.5 MB'
     },
-  ];
+  ]);
 
   const getStatusIcon = (status) => {
     switch(status) {
@@ -62,6 +65,29 @@ const RecentDocuments = () => {
     }
   };
 
+  const handleDownload = (doc) => {
+    toast({
+      title: "Download started",
+      description: `Downloading ${doc.name} (${doc.size})`,
+    });
+  };
+
+  const handleShare = (doc) => {
+    toast({
+      title: "Share document",
+      description: `Share options opened for ${doc.name}`,
+    });
+  };
+
+  const handleDelete = (docId) => {
+    setDocuments(documents.filter(doc => doc.id !== docId));
+    toast({
+      title: "Document deleted",
+      description: "The document has been removed from your list",
+      variant: "destructive"
+    });
+  };
+
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between">
@@ -69,7 +95,9 @@ const RecentDocuments = () => {
           <CardTitle>Recent Documents</CardTitle>
           <CardDescription>Latest documents processed by the system</CardDescription>
         </div>
-        <Button variant="outline" size="sm">View All</Button>
+        <Button variant="outline" size="sm" asChild>
+          <Link to="/documents">View All</Link>
+        </Button>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
@@ -109,10 +137,27 @@ const RecentDocuments = () => {
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
-                    <DropdownMenuItem>View Details</DropdownMenuItem>
-                    <DropdownMenuItem>Download</DropdownMenuItem>
-                    <DropdownMenuItem>Share</DropdownMenuItem>
-                    <DropdownMenuItem className="text-red-600">Delete</DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link to={`/documents/${doc.id}`} className="flex cursor-pointer">
+                        <Eye className="mr-2 h-4 w-4" />
+                        <span>View Details</span>
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => handleDownload(doc)}>
+                      <Download className="mr-2 h-4 w-4" />
+                      <span>Download</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => handleShare(doc)}>
+                      <Share2 className="mr-2 h-4 w-4" />
+                      <span>Share</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem 
+                      className="text-red-600"
+                      onClick={() => handleDelete(doc.id)}
+                    >
+                      <Trash2 className="mr-2 h-4 w-4" />
+                      <span>Delete</span>
+                    </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </div>

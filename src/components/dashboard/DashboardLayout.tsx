@@ -1,7 +1,8 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import DashboardHeader from './DashboardHeader';
 import { useToast } from '@/hooks/use-toast';
+import DocumentUploadModal from '@/components/DocumentUploadModal';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -19,6 +20,7 @@ const DashboardLayout = ({
   username = "Ahmed"
 }: DashboardLayoutProps) => {
   const { toast } = useToast();
+  const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
 
   React.useEffect(() => {
     // Display a welcome notification only if showWelcome is true
@@ -76,6 +78,12 @@ const DashboardLayout = ({
           </div>
         </div>
       </footer>
+      
+      {/* Upload Modal */}
+      <DocumentUploadModal 
+        isOpen={isUploadModalOpen} 
+        onClose={() => setIsUploadModalOpen(false)} 
+      />
     </div>
   );
 };

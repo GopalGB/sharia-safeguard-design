@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   Upload,
   BarChart3,
@@ -8,7 +8,7 @@ import {
   AlertTriangle
 } from 'lucide-react';
 import PageTransition from '@/components/PageTransition';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import ProcessingPipeline from '@/components/dashboard/ProcessingPipeline';
 import ComplianceStatus from '@/components/dashboard/ComplianceStatus';
@@ -17,9 +17,11 @@ import ComplianceAlerts from '@/components/dashboard/ComplianceAlerts';
 import ResourcesSection from '@/components/dashboard/ResourcesSection';
 import DashboardHeader from '@/components/dashboard/DashboardHeader';
 import { useToast } from '@/hooks/use-toast';
+import DocumentUploadModal from '@/components/DocumentUploadModal';
 
 const Dashboard = () => {
   const { toast } = useToast();
+  const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
 
   React.useEffect(() => {
     // Display a welcome notification
@@ -30,6 +32,17 @@ const Dashboard = () => {
       });
     }, 1000);
   }, [toast]);
+
+  const handleUploadClick = () => {
+    setIsUploadModalOpen(true);
+  };
+
+  const handleGenerateReport = () => {
+    toast({
+      title: "Generating report",
+      description: "Your compliance report is being generated. It will be available shortly.",
+    });
+  };
 
   return (
     <PageTransition>
@@ -46,11 +59,17 @@ const Dashboard = () => {
               <p className="text-deepCharcoal/70">Here's an overview of your compliance dashboard</p>
             </div>
             <div className="mt-4 md:mt-0 flex space-x-3">
-              <Button className="bg-gradient-to-r from-navyTrust to-mutedTeal text-white">
+              <Button 
+                className="bg-gradient-to-r from-navyTrust to-mutedTeal text-white"
+                onClick={handleUploadClick}
+              >
                 <Upload className="h-4 w-4 mr-2" />
                 Upload Document
               </Button>
-              <Button variant="outline">
+              <Button 
+                variant="outline"
+                onClick={handleGenerateReport}
+              >
                 <FileText className="h-4 w-4 mr-2" />
                 Generate Report
               </Button>
@@ -157,6 +176,12 @@ const Dashboard = () => {
             </div>
           </div>
         </footer>
+
+        {/* Upload Modal */}
+        <DocumentUploadModal 
+          isOpen={isUploadModalOpen} 
+          onClose={() => setIsUploadModalOpen(false)} 
+        />
       </div>
     </PageTransition>
   );
