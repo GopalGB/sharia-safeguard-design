@@ -24,6 +24,7 @@ import Documents from "./pages/Documents";
 import DocumentDetail from "./pages/DocumentDetail";
 import Clients from "./pages/Clients";
 import Reports from "./pages/Reports";
+import UploadDocument from "./pages/UploadDocument";
 
 const queryClient = new QueryClient();
 
@@ -55,6 +56,7 @@ const App = () => (
           <Route path="/documents/:id" element={<DocumentDetail />} />
           <Route path="/clients" element={<Clients />} />
           <Route path="/reports" element={<Reports />} />
+          <Route path="/upload-document" element={<UploadDocument />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

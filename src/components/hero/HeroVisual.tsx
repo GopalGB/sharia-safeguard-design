@@ -33,7 +33,7 @@ const HeroVisual = ({ animateElements }: { animateElements: boolean }) => {
     >
       <div className="relative">
         <Link 
-          to="/dashboard" 
+          to="/upload-document" 
           className="block hover:scale-[1.02] transition-transform duration-300"
           onClick={handleDashboardClick}
         >
