@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import HeroAnimation from './HeroAnimation';
 import HeroFeatureCard from './HeroFeatureCard';
 
@@ -14,9 +15,11 @@ const HeroVisual = ({ animateElements }: { animateElements: boolean }) => {
       }}
     >
       <div className="relative">
-        <HeroAnimation>
-          <HeroFeatureCard />
-        </HeroAnimation>
+        <Link to="/dashboard" className="block">
+          <HeroAnimation>
+            <HeroFeatureCard />
+          </HeroAnimation>
+        </Link>
         
         <div className="absolute -top-16 -left-16 w-32 h-32 opacity-80">
           <img 
