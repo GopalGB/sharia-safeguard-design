@@ -299,7 +299,7 @@ const UploadDocument = () => {
                   <div className="lg:col-span-2 space-y-8">
                     {/* Document Upload */}
                     <Card className="overflow-hidden border-border shadow-md">
-                      <CardHeader className="bg-gradient-to-r from-navyTrust to-navyTrust/90 text-white">
+                      <CardHeader className="bg-gradient-to-r from-mutedTeal to-navyTrust text-white">
                         <CardTitle>Document Upload</CardTitle>
                       </CardHeader>
                       <CardContent className="p-6">
@@ -375,7 +375,7 @@ const UploadDocument = () => {
 
                     {/* Document Information */}
                     <Card className="overflow-hidden border-border shadow-md">
-                      <CardHeader className="bg-gradient-to-r from-navyTrust to-navyTrust/90 text-white">
+                      <CardHeader className="bg-gradient-to-r from-mutedTeal to-navyTrust text-white">
                         <CardTitle>Document Information</CardTitle>
                       </CardHeader>
                       <CardContent className="p-6 space-y-6">
@@ -493,7 +493,7 @@ const UploadDocument = () => {
 
                     {/* AI Analysis Options */}
                     <Card className="overflow-hidden border-border shadow-md">
-                      <CardHeader className="bg-gradient-to-r from-navyTrust to-navyTrust/90 text-white">
+                      <CardHeader className="bg-gradient-to-r from-mutedTeal to-navyTrust text-white">
                         <CardTitle>AI Analysis Options</CardTitle>
                       </CardHeader>
                       <CardContent className="p-6 space-y-4">
@@ -663,7 +663,7 @@ const UploadDocument = () => {
                   <div className="space-y-8">
                     {/* Legal Acknowledgement */}
                     <Card className="overflow-hidden border-border shadow-md">
-                      <CardHeader className="bg-gradient-to-r from-navyTrust to-navyTrust/90 text-white">
+                      <CardHeader className="bg-gradient-to-r from-mutedTeal to-navyTrust text-white">
                         <CardTitle>Legal Acknowledgement</CardTitle>
                       </CardHeader>
                       <CardContent className="p-6 space-y-4">
@@ -723,7 +723,7 @@ const UploadDocument = () => {
                     
                     {/* Recent Uploads */}
                     <Card className="overflow-hidden border-border shadow-md">
-                      <CardHeader className="bg-gradient-to-r from-navyTrust to-navyTrust/90 text-white flex flex-row items-center justify-between">
+                      <CardHeader className="bg-gradient-to-r from-mutedTeal to-navyTrust text-white flex flex-row items-center justify-between">
                         <CardTitle>Recent Uploads</CardTitle>
                         <Button variant="link" size="sm" asChild className="text-white hover:text-white/90 p-0">
                           <Link to="/documents">View All</Link>
@@ -759,7 +759,7 @@ const UploadDocument = () => {
                     
                     {/* Security Info */}
                     <Card className="overflow-hidden border-border shadow-md">
-                      <CardHeader className="bg-gradient-to-r from-navyTrust to-navyTrust/90 text-white">
+                      <CardHeader className="bg-gradient-to-r from-mutedTeal to-navyTrust text-white">
                         <CardTitle className="flex items-center gap-2">
                           <span>🔒</span> Security & Compliance Information
                         </CardTitle>
