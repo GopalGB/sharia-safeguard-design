@@ -44,35 +44,44 @@ const Navbar = () => {
     document.documentElement.lang = language === 'en' ? 'ar' : 'en';
   };
   
+  // Check if we're on the upload document page to add extra spacing
+  const isUploadPage = location.pathname === '/upload-document';
+  const navbarClasses = cn(
+    "fixed top-0 left-0 w-full z-50 transition-all duration-500", 
+    scrolled 
+      ? "bg-white bg-opacity-95 backdrop-filter backdrop-blur-md shadow-md py-2 animate-fade-in" 
+      : "bg-transparent py-4"
+  );
+  
   return (
-    <nav className={cn(
-      "fixed top-0 left-0 w-full z-50 transition-all duration-500", 
-      scrolled 
-        ? "bg-white bg-opacity-95 backdrop-filter backdrop-blur-md shadow-md py-2 animate-fade-in" 
-        : "bg-transparent py-4"
-    )}>
-      <div className="container mx-auto px-4 flex justify-between items-center">
-        <div className="flex items-center">
-          <AnimatedLogo size={scrolled ? "sm" : "md"} showText={true} />
+    <>
+      <nav className={navbarClasses}>
+        <div className="container mx-auto px-4 flex justify-between items-center">
+          <div className="flex items-center">
+            <AnimatedLogo size={scrolled ? "sm" : "md"} showText={true} />
+          </div>
+
+          {/* Desktop Navigation */}
+          <NavbarDesktop 
+            language={language}
+            toggleLanguage={toggleLanguage}
+            scrollToSection={scrollToSection}
+          />
+
+          {/* Mobile Navigation */}
+          <NavbarMobile 
+            language={language}
+            toggleLanguage={toggleLanguage}
+            scrollToSection={scrollToSection}
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+          />
         </div>
-
-        {/* Desktop Navigation */}
-        <NavbarDesktop 
-          language={language}
-          toggleLanguage={toggleLanguage}
-          scrollToSection={scrollToSection}
-        />
-
-        {/* Mobile Navigation */}
-        <NavbarMobile 
-          language={language}
-          toggleLanguage={toggleLanguage}
-          scrollToSection={scrollToSection}
-          isOpen={isOpen}
-          setIsOpen={setIsOpen}
-        />
-      </div>
-    </nav>
+      </nav>
+      
+      {/* Spacer div to prevent content from being hidden under the navbar */}
+      <div className={`${isUploadPage ? 'h-20' : 'h-16'} w-full`} aria-hidden="true"></div>
+    </>
   );
 };
 

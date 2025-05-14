@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from 'react';
 import { Upload, FileType, X, Check, ArrowLeft, Info } from 'lucide-react';
 import PageTransition from '@/components/PageTransition';
@@ -228,8 +227,8 @@ const UploadDocument = () => {
     <PageTransition>
       <div className="min-h-screen flex flex-col">
         <Navbar />
-        <main className="flex-grow">
-          <div className="container mx-auto px-4 py-10">
+        <main className="flex-grow pt-6">
+          <div className="container mx-auto px-4 py-6">
             <div className="mb-8">
               <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gradient mb-2">Upload Document</h1>
               <p className="text-deepCharcoal/70 mb-8">Upload and analyze your legal documents with UAE compliance</p>
