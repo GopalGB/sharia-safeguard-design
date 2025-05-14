@@ -1,5 +1,7 @@
 
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { LayoutDashboard, Upload, FileText, LogOut, Languages } from 'lucide-react';
 import DashboardHeader from './DashboardHeader';
 import { useToast } from '@/hooks/use-toast';
 import DocumentUploadModal from '@/components/DocumentUploadModal';
@@ -36,8 +38,53 @@ const DashboardLayout = ({
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <DashboardHeader username={username} />
+      {/* Top Navigation */}
+      <div className="bg-navyTrust text-white">
+        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+          <div className="flex items-center space-x-6">
+            <Link to="/dashboard" className="text-xl font-bold">
+              ShariaGuard
+            </Link>
+            <div className="hidden md:flex space-x-1">
+              <Link 
+                to="/dashboard" 
+                className="px-3 py-1.5 rounded-md text-sm font-medium hover:bg-navyTrust/90 flex items-center"
+              >
+                <LayoutDashboard className="mr-1.5 h-4 w-4" />
+                Dashboard
+              </Link>
+              <Link 
+                to="/upload-document" 
+                className="px-3 py-1.5 rounded-md text-sm font-medium hover:bg-navyTrust/90 flex items-center"
+              >
+                <Upload className="mr-1.5 h-4 w-4" />
+                Upload
+              </Link>
+              <Link 
+                to="/documents" 
+                className="px-3 py-1.5 rounded-md text-sm font-medium hover:bg-navyTrust/90 flex items-center"
+              >
+                <FileText className="mr-1.5 h-4 w-4" />
+                Documents
+              </Link>
+            </div>
+          </div>
+          <div className="flex items-center space-x-4">
+            <button className="flex items-center text-sm font-medium hover:text-gray-200 transition-colors">
+              <Languages className="h-4 w-4 mr-1" />
+              EN
+            </button>
+            <div className="h-4 w-px bg-white/20"></div>
+            <Link to="/login" className="flex items-center text-sm font-medium hover:text-gray-200 transition-colors">
+              <LogOut className="h-4 w-4 mr-1" />
+              Logout
+            </Link>
+            <div className="h-8 w-8 rounded-full bg-mutedTeal text-white flex items-center justify-center font-medium">
+              TE
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
